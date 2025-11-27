@@ -1,3 +1,15 @@
+/* Highlight active menu item in orange like the design */
+.main-navigation .menu > .current-menu-item > a,
+.main-navigation .menu > .current_page_item > a,
+.main-navigation .menu > .current-menu-ancestor > a,
+.main-navigation .menu > .current_page_ancestor > a {
+  color: #f4a259 !important;
+  border-bottom: 2px solid #f4a259;
+}
+/* Hide header banner on single job detail page */
+.single-job_listing .entry-header[style*="background-image"] {
+  display: none !important;
+}
 /*!
 Theme Name: JobScout
 Theme URI: https://rarathemes.com/wordpress-themes/jobscout/
