@@ -64,6 +64,11 @@ require get_template_directory() . '/inc/widgets.php';
 require get_template_directory() . '/inc/metabox.php';
 
 /**
+ * About Page Metabox
+ */
+require get_template_directory() . '/inc/about-page-metabox.php';
+
+/**
  * Getting Started
 */
 require get_template_directory() . '/inc/dashboard/dashboard.php';
