@@ -1,15 +1,23 @@
 <style>
+.search-bar-frame {
+    display: inline-block;
+    padding: 8px 12px;
+    margin-top: 25px;
+    background: rgba(0, 0, 0, 0.4);
+}
+
 .job-search-form {
     display: flex;
     align-items: stretch;
-    gap: 0;
+    gap: 6px; /* tách ô tìm kiếm, list và nút */
     max-width: 770px;
     width: 100%;
-    margin: 25px 0 0;
-    background: #ffffff;
+    margin: 0;
+    background: transparent;
     border-radius: 3px;
     overflow: hidden;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+    border: none;
+    box-shadow: none;
 }
 
 .search-input-wrapper,
@@ -50,6 +58,14 @@
     color: #333;
 }
 
+.search-input:focus,
+.search-input:hover,
+.search-input:active,
+.search-input:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
 .search-input::placeholder {
     color: #999;
 }
@@ -85,11 +101,17 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+    .search-bar-frame {
+        padding: 0;
+        background: transparent;
+    }
+
     .job-search-form {
         flex-direction: column;
         width: 100%;
         box-shadow: none;
         border-radius: 0;
+        border: none;
     }
     
     .search-input-wrapper,
@@ -121,6 +143,13 @@ $banner_title      = get_theme_mod('banner_title', __('Aim Higher, Dream Bigger'
 $banner_subtitle   = get_theme_mod('banner_subtitle', __('Each month, more than 7 million JobScout turn to website in their search for work, making over 160,000 applications every day.', 'jobscout'));
 $find_a_job_link   = get_option('job_manager_jobs_page_id', 0);
 
+// Determine where the banner search form should submit
+if ($find_a_job_link) {
+    $action_page = get_permalink($find_a_job_link);
+} else {
+    $action_page = home_url('/');
+}
+
 if ($ed_banner && has_custom_header()) { ?>
     <div id="banner-section" class="site-banner<?php if (has_header_video()) echo esc_attr(' video-banner'); ?>">
         <div class="item">
@@ -134,30 +163,34 @@ if ($ed_banner && has_custom_header()) { ?>
                         ?>
                         <div class="form-wrap">
                             <div class="search-filter-wrap">
-                                <div class="job-search-form">
-                                    <div class="search-input-wrapper">
-                                        <i class="search-icon">🔍</i>
-                                        <input type="text"
-                                            class="search-input"
-                                            placeholder="Search for jobs, companies, skills"
-                                            name="search_keywords">
-                                    </div>
+                                <form class="jobscout_job_filters" method="GET" action="<?php echo esc_url( $action_page ); ?>">
+                                    <div class="search-bar-frame">
+                                        <div class="job-search-form">
+                                        <div class="search-input-wrapper">
+                                            <i class="search-icon">🔍</i>
+                                            <input type="text"
+                                                class="search-input"
+                                                placeholder="Search for jobs, companies, skills"
+                                                name="search_keywords">
+                                        </div>
 
-                                    <div class="location-select-wrapper">
-                                        <i class="location-icon">📍</i>
-                                        <select class="location-select" name="search_location">
-                                            <option value="tokyo">Tokyo</option>
-                                            <option value="osaka">Osaka</option>
-                                            <option value="kyoto">Kyoto</option>
-                                            <option value="yokohama">Yokohama</option>
-                                            <option value="nagoya">Nagoya</option>
-                                        </select>
-                                    </div>
+                                        <div class="location-select-wrapper">
+                                            <i class="location-icon">📍</i>
+                                            <select class="location-select" name="search_location">
+                                                <option value="tokyo">Tokyo</option>
+                                                <option value="osaka">Osaka</option>
+                                                <option value="kyoto">Kyoto</option>
+                                                <option value="yokohama">Yokohama</option>
+                                                <option value="nagoya">Nagoya</option>
+                                            </select>
+                                        </div>
 
-                                    <button type="submit" class="search-button">
-                                        SEARCH JOB
-                                    </button>
-                                </div>
+                                            <button type="submit" class="search-button">
+                                                SEARCH JOB
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

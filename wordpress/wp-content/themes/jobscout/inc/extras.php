@@ -141,7 +141,7 @@ function jobscout_site_branding( $responsive = false ){
                     <h1 class="site-title" itemprop="name"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" itemprop="url"><?php bloginfo( 'name' ); ?></a></h1>
                     <?php 
                 }else{ ?>
-                    <p class="site-title" itemprop="name"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" itemprop="url"><?php bloginfo( 'name' ); ?></a></p>
+                    <div class="site-logo-block" aria-label="<?php echo esc_attr( $site_title ); ?>"></div>
                 <?php
                 }
             }

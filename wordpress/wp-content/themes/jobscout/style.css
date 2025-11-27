@@ -748,7 +748,8 @@ input[type="datetime-local"]:focus,
 input[type="color"]:focus,
 textarea:focus {
   color: #000;
-  outline: thin dotted;
+  outline: none;
+  box-shadow: none;
 }
 
 select {
@@ -1276,7 +1277,14 @@ form.search-form input.search-submit:hover {
 }
 
 form.search-form input.search-submit:focus {
-  outline: thin dotted #000;
+  outline: none;
+}
+
+/* Remove dotted focus outline only for the main search form */
+form.search-form input.search-field:focus,
+form.search-form input.search-submit:focus {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 #secondary .widget .widget-title,
@@ -2184,7 +2192,7 @@ body.home:not(.banner-enabled) .site-header {
 }
 
 .site-branding .site-title a {
-  color: #2ace5e;
+  color: #000000;
 }
 
 .site-branding .site-description {
@@ -2192,6 +2200,13 @@ body.home:not(.banner-enabled) .site-header {
   font-size: 0.778em;
   color: #6a6a6a;
   font-weight: 400;
+}
+
+/* Solid black logo block for non-home pages */
+.site-logo-block {
+  width: 180px;
+  height: 40px;
+  background-color: #000000;
 }
 
 .header-main .menu-wrap {
@@ -2319,7 +2334,7 @@ SITE BANNER SECTION
   top: 50%;
   left: 0;
   right: 0;
-  text-align: center;
+  text-align: left;
   z-index: 9;
   -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);
@@ -2327,25 +2342,28 @@ SITE BANNER SECTION
 }
 
 .banner-caption .caption-inner {
-  max-width: 770px;
+  max-width: 900px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .banner-caption .title {
   margin: 0;
-  font-size: 2.5em;
+  font-size: 2.7em;
   color: #fff;
   font-weight: 800;
-  line-height: 1.4;
+  line-height: 1.3;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .banner-caption .description {
   margin-top: 10px;
-  font-size: 1em;
+  font-size: 0.95em;
   color: #fff;
-  line-height: 1.5;
+  line-height: 1.6;
   font-weight: 400;
+  max-width: 650px;
 }
 
 .banner-caption .form-wrap {
@@ -2363,6 +2381,8 @@ SITE BANNER SECTION
 .banner-caption .search-filter-wrap .search-form {
   max-width: 540px;
   margin: 0 auto;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 .banner-caption .jobscout_job_filters .search_jobs {
@@ -2372,6 +2392,9 @@ SITE BANNER SECTION
   flex-wrap: wrap;
   border-radius: 5px;
   overflow: hidden;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.35);
 }
 
 .banner-caption .jobscout_job_filters .search_jobs div.filter_first,
@@ -2408,13 +2431,18 @@ SITE BANNER SECTION
 .banner-caption .jobscout_job_filters .search_jobs select {
   border-radius: 0;
   height: 60px;
-  border-top: none;
-  border-bottom: none;
-  border-right: none;
+  border: none;
   font-size: 0.8888em;
   font-weight: 400;
   padding: 10px 20px;
   color: #666;
+  background-color: transparent;
+}
+
+.banner-caption .jobscout_job_filters .search_jobs input:focus,
+.banner-caption .jobscout_job_filters .search_jobs select:focus {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .banner-caption .jobscout_job_filters .search_jobs input::placeholder {
@@ -2443,7 +2471,7 @@ SITE BANNER SECTION
   background-position: center;
   text-indent: 70px;
   overflow: hidden;
-  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  border-left: none;
 }
 
 .banner-caption .jobscout_job_filters .search_jobs input[type="submit"]:hover {
@@ -2462,7 +2490,7 @@ SITE BANNER WITH VIDEO
 
 .video-banner #wp-custom-header::before {
   content: "";
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0.45);
   position: absolute;
   top: 0;
   left: 0;
@@ -2569,18 +2597,18 @@ section.top-job-section .section-title {
 
 .top-job-section .row div.job_listings article {
   width: 48%;
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
   margin-right: 2.5%;
   margin-bottom: 3%;
   border-radius: 5px;
-  padding: 26px 30px;
+  padding: 26px 32px;
   position: relative;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
   overflow: hidden;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
 .top-job-section .row div.job_listings article:nth-child(2n) {
@@ -2643,13 +2671,14 @@ section.top-job-section .section-title {
   font-weight: 400;
   line-height: 1.44em;
   margin-top: 5px;
+  display: none;
 }
 
 .top-job-section .row div.job_listings article .job-badges {
-  margin-top: 12px;
+  margin-top: 14px;
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 10px;
 }
 
 .top-job-section .row div.job_listings article .job-badge {
@@ -2666,23 +2695,29 @@ section.top-job-section .section-title {
 
 .top-job-section .row div.job_listings article .entry-meta {
   border-top: none;
-  margin-top: 8px;
+  margin-top: 14px;
   padding-top: 0;
   font-size: 1em;
 }
 
+.top-job-section .row div.job_listings article .job-desc {
+  margin-top: 10px;
+  font-size: 0.9em;
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.75);
+}
+
 .top-job-section .row div.job_listings article .salary-amt,
 .top-job-section .row div.job_listings article .company-address {
-  font-size: 0.8888em;
-  line-height: 1.44em;
+  font-size: 0.85em;
+  line-height: 1.5em;
   font-weight: 400;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
+  color: rgba(0, 0, 0, 0.6);
 }
 
 .top-job-section .row div.job_listings article .salary-amt .currency {
-  font-weight: 900;
-  color: #2ace5e;
-  margin-right: 5px;
+  display: none;
 }
 
 .currency svg {
@@ -2693,8 +2728,7 @@ section.top-job-section .section-title {
 }
 
 .top-job-section .row div.job_listings article .company-address svg {
-  color: #2ace5e;
-  margin-right: 5px;
+  display: none;
 }
 
 .top-job-section .row div.job_listings article .entry-meta a {
@@ -2914,6 +2948,7 @@ CTA SECTION
   background-size: cover;
   background-position: center center;
   position: relative;
+  text-align: center;
 }
 
 .bg-cta-section::before {
@@ -2930,28 +2965,60 @@ CTA SECTION
 }
 
 section[class*="-section"] .widget_raratheme_companion_cta_widget .right {
-  text-align: left;
+  text-align: center;
 }
 
 section[class*="-section"] .widget_raratheme_companion_cta_widget .right .raratheme-cta-container {
   position: relative;
+  max-width: 760px;
+  margin: 0 auto;
 }
 
 section[class*="-section"] .widget_raratheme_companion_cta_widget .right .widget-title,
 section[class*="-section"] .widget_raratheme_companion_cta_widget .right .text-holder {
-  width: 65%;
+  width: 100%;
+}
+
+section[class*="-section"] .widget_raratheme_companion_cta_widget .right .widget-title {
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 section[class*="-section"] .widget_raratheme_companion_cta_widget .right .text-holder p {
   margin-bottom: 0;
+  color: #fff;
 }
 
 section[class*="-section"] .widget_raratheme_companion_cta_widget .right .button-wrap {
-  position: absolute;
-  top: 20%;
-  right: 0;
-  width: 35%;
-  text-align: right;
+  position: static;
+  margin-top: 30px;
+  width: 100%;
+  text-align: center;
+}
+
+.bg-cta-section .widget_raratheme_companion_cta_widget .widget-title {
+  font-size: 2.1em;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.bg-cta-section .widget_raratheme_companion_cta_widget .text-holder {
+  font-size: 0.95em;
+}
+
+.bg-cta-section .widget_raratheme_companion_cta_widget .text-holder p {
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+.bg-cta-section .widget_raratheme_companion_cta_widget a.btn-cta {
+  background: transparent;
+  border-color: #ffffff;
+  color: #ffffff;
+  padding: 11px 40px;
+  border-radius: 3px;
 }
 
 /*===========================
@@ -2969,7 +3036,7 @@ section.article-section .section-title {
 
 .article-section .article-wrap {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: 30px;
   text-align: left;
   margin-top: 50px;
@@ -2977,7 +3044,7 @@ section.article-section .section-title {
 }
 
 .article-section .article-wrap article {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
   border-radius: 5px;
   /*overflow: hidden;*/
 }
@@ -2987,14 +3054,60 @@ section.article-section .section-title {
 }
 
 .article-section .article-wrap header.entry-header {
-  padding: 30px;
+  padding: 22px 24px;
 }
 
 .article-section .article-wrap header.entry-header .entry-title {
-  margin: 10px 0 0 0;
-  line-height: 1.5;
-  font-size: 1.112em;
+  margin: 8px 0 0 0;
+  line-height: 1.4;
+  font-size: 0.98em;
   font-weight: 700;
+}
+
+/* Blog card: image + content side by side */
+.article-section .article-wrap article .blog-card-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.article-section .article-wrap article .post-thumbnail {
+  flex: 0 0 40%;
+}
+
+.article-section .article-wrap article .post-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.article-section .article-wrap article .blog-card-text {
+  flex: 1;
+  padding: 20px 24px;
+}
+
+.article-section .article-wrap article .blog-card-text .entry-title {
+  margin-top: 0;
+}
+
+.article-section .article-wrap article .blog-excerpt {
+  margin-top: 8px;
+  font-size: 0.85em;
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.article-section .article-wrap article .blog-read-more {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 0.9em;
+  font-weight: 700;
+  color: #f7941d;
+}
+
+.article-section .article-wrap article .blog-read-more:hover {
+  color: #ff6b35;
 }
 
 /*=========================
@@ -3019,6 +3132,7 @@ section.testimonial-section {
   z-index: 1;
   background-image: url(images/testimonial-bg.jpg);
   background-repeat: no-repeat;
+  display: none;
 }
 
 .testimonial-section .section-title,
@@ -3112,6 +3226,7 @@ CLIENT SECTION
 section.client-section {
   margin: 40px 0 60px 0;
   text-align: center;
+  display: none;
 }
 
 .client-section .widget {
@@ -4253,6 +4368,86 @@ a:hover path.fav {
   flex: 0;
   border-radius: 0 5px 5px 0;
   min-height: 50px;
+}
+
+/*===========================
+CUSTOM FOOTER NEWSLETTER BAR
+===========================*/
+.contact-newsletter.global-newsletter {
+  background: #f7941d;
+  padding: 20px 0;
+  color: #ffffff;
+}
+
+.contact-newsletter .newsletter-content {
+  max-width: 1170px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.contact-newsletter .newsletter-title {
+  margin: 0;
+  font-size: 1.1em;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.contact-newsletter .newsletter-form {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* tách ô email và nút SUBSCRIBE */
+}
+
+.contact-newsletter .newsletter-input-wrapper {
+  position: relative;
+  flex: 1;
+}
+
+.contact-newsletter .newsletter-input {
+  width: 100%;
+  height: 46px;
+  border-radius: 3px;
+  border: none;
+  padding: 0 14px 0 40px;
+  font-size: 0.95em;
+}
+
+.contact-newsletter .newsletter-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  opacity: 0.6;
+}
+
+.contact-newsletter .newsletter-submit {
+  height: 46px;
+  padding: 0 26px;
+  background: transparent;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.9em;
+  border-radius: 3px;
+}
+
+.contact-newsletter .newsletter-submit:hover {
+  background: #ffffff;
+  color: #f7941d;
+}
+
+.contact-page-footer .footer-logo-wrap {
+  text-align: center;
+  margin: 25px 0 15px 0;
+}
+
+.contact-page-footer .footer-logo-wrap .site-logo-block {
+  display: inline-block;
 }
 
 /*===========================
