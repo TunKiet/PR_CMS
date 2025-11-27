@@ -3132,22 +3132,21 @@ section.client-section {
 SITE FOOTER SECTION
 ==========================*/
 .footer-t {
-  background: #000;
+  background: #f5f5f5;
   padding-top: 60px;
+  padding-bottom: 40px;
 }
 
 .site-footer .grid:not(.column-1) {
   display: flex;
   flex: 1;
   flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
 }
 
 .site-footer .grid:not(.column-1)>.col {
   margin-right: 3%;
-}
-
-.site-footer .grid:not(.column-1)>.col:last-child {
-  margin-right: 0;
 }
 
 .site-footer .grid.column-4>.col {
@@ -3163,7 +3162,7 @@ SITE FOOTER SECTION
 }
 
 .site-footer .widget_text .textwidget {
-  color: rgba(255, 255, 255, 0.8);
+  color: #000;
 }
 
 .widget_text .textwidget p {
@@ -3176,20 +3175,21 @@ SITE FOOTER SECTION
 }
 
 .footer-b {
-  background: #212121;
-  padding: 15px 0;
+  background: #f5f5f5;
+  padding: 15px 0 30px 0;
   font-size: 0.888em;
-  color: rgba(255, 255, 255, 0.8);
+  color: #666666;
   font-weight: 400;
   text-align: center;
+  border-top: 1px solid #e0e0e0;
 }
 
 .footer-b a {
-  color: rgba(255, 255, 255, 0.8);
+  color: #666666;
 }
 
 .footer-b a:hover {
-  color: #2ace5e;
+  color: #ff6b35;
 }
 
 .footer-b .privacy-block {
@@ -3640,7 +3640,7 @@ body.page-template-contact-page .contact-hero-banner {
 /* Newsletter Section - Full width like banner */
 .contact-newsletter {
   background: #ff6b35;
-  padding: 50px 20px;
+  padding: 30px 20px;
   margin: 0;
   width: 100vw;
   position: relative;
@@ -3654,7 +3654,7 @@ body.page-template-contact-page .contact-hero-banner {
 }
 
 .newsletter-content {
-  max-width: 1200px;
+  max-width: 960px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -3690,8 +3690,8 @@ body.page-template-contact-page .contact-hero-banner {
   align-items: center;
   height: 50px;
   border-radius: 5px;
-  min-width: 400px;
-  max-width: 600px;
+  min-width: 320px;
+  max-width: 520px;
 }
 
 .newsletter-input {
@@ -3722,7 +3722,7 @@ body.page-template-contact-page .contact-hero-banner {
   color: #fff;
   border: 2px solid #fff;
   padding: 0 30px;
-  height: 50px;
+  height: 48px;
   font-size: 0.85em;
   font-weight: 700;
   text-transform: uppercase;
@@ -3835,11 +3835,11 @@ body.page-template-contact-page .site {
   width: 100% !important;
 }
 
-/* Hide default footer on contact page */
-body.page-template-contact-page .site-footer,
-body.page-template-contact-page .footer-t,
-body.page-template-contact-page .footer-b,
-body.page-template-contact-page #colophon {
+/* Hide default footer */
+.site-footer,
+.footer-t,
+.footer-b,
+#colophon {
   display: none !important;
 }
 

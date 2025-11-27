@@ -57,45 +57,6 @@ get_header(); ?>
         </div>
     </main><!-- #main -->
 </div><!-- #primary -->
-
-<!-- Newsletter Subscription - Below contact info, before footer, full width -->
-<div class="contact-newsletter">
-    <div class="newsletter-content">
-        <h3 class="newsletter-title">Subscribe To Our Newsletter</h3>
-        <form class="newsletter-form">
-            <div class="newsletter-input-wrapper">
-                <input type="email" class="newsletter-input" placeholder="Input your email address" required>
-                <span class="newsletter-icon">✉</span>
-            </div>
-            <button type="submit" class="newsletter-submit">SUBSCRIBE</button>
-        </form>
-    </div>
-</div>
-
-<!-- Simple Footer for Contact Page -->
-<footer class="contact-page-footer">
-    <div class="contact-footer-inner">
-        <!-- Navigation Links -->
-        <nav class="contact-footer-nav">
-            <a href="#">JOBS</a>
-            <a href="#">COMPANIES</a>
-            <a href="#">BLOG</a>
-            <a href="#">ABOUT</a>
-            <a href="#">CONTACT</a>
-        </nav>
-        
-        <!-- Social Media Icons -->
-        <div class="contact-footer-social">
-            <a href="#" class="social-icon facebook" aria-label="Facebook">f</a>
-            <a href="#" class="social-icon google" aria-label="Google">G</a>
-            <a href="#" class="social-icon line" aria-label="Line">L</a>
-            <a href="#" class="social-icon twitter" aria-label="Twitter">t</a>
-        </div>
-    </div>
-</footer>
-
 <?php
-// Hide sidebar on contact page - don't call get_sidebar()
-wp_footer(); ?>
-</body>
-</html>
+// Hide sidebar on contact page - don't call get_sidebar(). Use global footer from footer.php.
+get_footer();
