@@ -1,3 +1,15 @@
+/* Highlight active menu item in orange like the design */
+.main-navigation .menu > .current-menu-item > a,
+.main-navigation .menu > .current_page_item > a,
+.main-navigation .menu > .current-menu-ancestor > a,
+.main-navigation .menu > .current_page_ancestor > a {
+  color: #f4a259 !important;
+  border-bottom: 2px solid #f4a259;
+}
+/* Hide header banner on single job detail page */
+.single-job_listing .entry-header[style*="background-image"] {
+  display: none !important;
+}
 /*!
 Theme Name: JobScout
 Theme URI: https://rarathemes.com/wordpress-themes/jobscout/
@@ -3404,6 +3416,543 @@ CONTACT PAGE
   margin-top: 0;
   font-size: 0.8888em;
   font-weight: 400;
+}
+
+/*===========================
+CONTACT PAGE - NEW DESIGN
+===========================*/
+/* Hide sidebar on contact page */
+.page-template-contact-page .site-main,
+.page-template-contact-page #primary,
+.contact-page-wrapper {
+  width: 100%;
+  max-width: 100%;
+}
+
+.page-template-contact-page #secondary,
+.contact-page-wrapper ~ #secondary,
+body.page-template-contact-page #secondary {
+  display: none !important;
+}
+
+body.page-template-contact-page .site-main {
+  width: 100%;
+}
+
+/* Contact Hero Banner - Extends to header */
+.contact-hero-banner {
+  position: relative;
+  width: 100vw;
+  min-height: 500px;
+  background-image: url('images/banner-image.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+body.page-template-contact-page .contact-hero-banner {
+  margin-top: 0;
+}
+
+.contact-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.contact-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.contact-hero-title {
+  font-size: 4em;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
+  font-family: var(--primary-font);
+}
+
+/* Contact Page Content */
+.contact-page-content {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* Main Content Area - Full width grey background */
+.contact-main-content {
+  background: #f5f5f5;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: 60px 20px;
+  box-sizing: border-box;
+}
+
+.contact-main-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Headquarters Section */
+.contact-headquarters {
+  text-align: center;
+  padding: 0;
+  margin: 0 0 60px 0;
+}
+
+.contact-section-title {
+  font-size: 1.8em;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 20px 0;
+}
+
+.contact-address {
+  font-size: 1.1em;
+  color: #666;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Contact Info Columns */
+.contact-info-columns {
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-info-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.contact-column {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+  text-align: left;
+}
+
+.contact-column-title {
+  font-size: 1.5em;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 15px 0;
+}
+
+.contact-subtitle {
+  font-size: 1em;
+  color: #666;
+  margin: 0 0 15px 0;
+  line-height: 1.6;
+}
+
+.contact-phone-item {
+  margin-bottom: 15px;
+}
+
+.contact-phone-item strong {
+  display: block;
+  font-size: 1em;
+  color: #333;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.contact-phone {
+  font-size: 1.1em;
+  color: #333;
+  font-weight: 600;
+}
+
+.contact-description {
+  font-size: 0.95em;
+  color: #666;
+  line-height: 1.6;
+  margin: 20px 0 0 0;
+}
+
+.contact-link {
+  color: #ff6b35;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.contact-link:hover {
+  text-decoration: underline;
+}
+
+/* Newsletter Section - Full width like banner */
+.contact-newsletter {
+  background: #ff6b35;
+  padding: 50px 20px;
+  margin: 0;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  box-sizing: border-box;
+  clear: both;
+  display: block;
+}
+
+.newsletter-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  flex-wrap: nowrap;
+}
+
+.newsletter-title {
+  color: #fff;
+  font-size: 1.5em;
+  font-weight: 700;
+  margin: 0;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.newsletter-form {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex: 1;
+  max-width: none;
+  min-width: auto;
+}
+
+.newsletter-input-wrapper {
+  position: relative;
+  flex: 1;
+  background: #fff;
+  padding: 0 15px 0 45px;
+  display: flex;
+  align-items: center;
+  height: 50px;
+  border-radius: 5px;
+  min-width: 400px;
+  max-width: 600px;
+}
+
+.newsletter-input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 1em;
+  padding: 0;
+  background: transparent;
+  color: #333;
+}
+
+.newsletter-input::placeholder {
+  color: #999;
+}
+
+.newsletter-icon {
+  position: absolute;
+  left: 15px;
+  color: #999;
+  font-size: 1.1em;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.newsletter-submit {
+  background: #ff6b35;
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 0 30px;
+  height: 50px;
+  font-size: 0.85em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+  flex-shrink: 0;
+  margin-left: 10px;
+}
+
+.newsletter-submit:hover {
+  background: #fff;
+  color: #ff6b35;
+  border-color: #fff;
+}
+
+/* Make banner extend to header on contact page */
+body.page-template-contact-page .site-header {
+  position: relative;
+  z-index: 10;
+}
+
+body.page-template-contact-page .contact-hero-banner {
+  margin-top: 0;
+}
+
+/* Hide breadcrumbs on contact page */
+body.page-template-contact-page .breadcrumb-wrap {
+  display: none !important;
+}
+
+/* Ensure full width layout */
+body.page-template-contact-page #content {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body.page-template-contact-page .site-main {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Break out of any container constraints */
+body.page-template-contact-page #primary {
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+/* Ensure all full-width sections extend properly */
+body.page-template-contact-page .contact-main-content {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+/* Newsletter must extend fully including header area - same as banner */
+body.page-template-contact-page .contact-newsletter {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  box-sizing: border-box;
+  clear: both;
+  display: block;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Ensure parent containers don't limit width */
+body.page-template-contact-page #primary,
+body.page-template-contact-page .site-main,
+body.page-template-contact-page #content,
+body.page-template-contact-page .site-content {
+  overflow-x: visible;
+  max-width: 100%;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Ensure body and html don't have padding that prevents full width */
+body.page-template-contact-page {
+  overflow-x: hidden;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+html.page-template-contact-page {
+  overflow-x: hidden;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Ensure site container doesn't limit newsletter */
+body.page-template-contact-page .site {
+  overflow-x: visible;
+  max-width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  width: 100% !important;
+}
+
+/* Hide default footer on contact page */
+body.page-template-contact-page .site-footer,
+body.page-template-contact-page .footer-t,
+body.page-template-contact-page .footer-b,
+body.page-template-contact-page #colophon {
+  display: none !important;
+}
+
+/* Custom Footer for Contact Page */
+.contact-page-footer {
+  background: #f5f5f5;
+  padding: 60px 20px 40px 20px;
+  text-align: center;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  box-sizing: border-box;
+  margin-top: 0;
+}
+
+.contact-footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contact-footer-nav {
+  margin-bottom: 30px;
+}
+
+.contact-footer-nav a {
+  color: #000;
+  text-decoration: none;
+  font-size: 0.9em;
+  font-weight: 600;
+  margin: 0 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+.contact-footer-nav a:hover {
+  color: #ff6b35;
+}
+
+.contact-footer-social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.contact-footer-social .social-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.1em;
+  color: #fff;
+  transition: transform 0.3s ease;
+}
+
+.contact-footer-social .social-icon:hover {
+  transform: scale(1.1);
+}
+
+.contact-footer-social .social-icon.facebook {
+  background: #1877f2;
+}
+
+.contact-footer-social .social-icon.google {
+  background: #fff;
+  color: #4285f4;
+  border: 2px solid #4285f4;
+}
+
+.contact-footer-social .social-icon.line {
+  background: #00c300;
+}
+
+.contact-footer-social .social-icon.twitter {
+  background: #1da1f2;
+}
+
+/* Ensure white background after newsletter */
+body.page-template-contact-page {
+  background: #fff;
+}
+
+body.page-template-contact-page .site {
+  background: #fff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact-hero-title {
+    font-size: 2.5em;
+  }
+  
+  .contact-headquarters {
+    padding: 40px 20px;
+  }
+  
+  .contact-info-columns {
+    flex-direction: column;
+    padding: 40px 20px;
+  }
+  
+  .contact-column {
+    max-width: 100%;
+    text-align: center;
+  }
+  
+  .newsletter-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 25px;
+  }
+  
+  .newsletter-form {
+    width: 100%;
+    max-width: 100%;
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  .newsletter-title {
+    white-space: normal;
+    margin-bottom: 0;
+    font-size: 1.3em;
+  }
+  
+  .newsletter-submit {
+    margin-left: 10px;
+    margin-top: 0;
+    width: auto;
+  }
+  
+  .newsletter-input-wrapper {
+    width: 100%;
+    max-width: 100%;
+    min-width: auto;
+  }
 }
 
 /*===========================
