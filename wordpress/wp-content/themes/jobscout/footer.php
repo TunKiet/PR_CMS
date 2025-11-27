@@ -47,6 +47,9 @@
 
     <footer class="contact-page-footer global-footer">
         <div class="contact-footer-inner">
+            <div class="footer-logo-wrap">
+                <div class="site-logo-block" aria-label="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>"></div>
+            </div>
             <nav class="contact-footer-nav">
                 <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Jobs', 'jobscout' ); ?></a>
                 <a href="#"><?php esc_html_e( 'Companies', 'jobscout' ); ?></a>

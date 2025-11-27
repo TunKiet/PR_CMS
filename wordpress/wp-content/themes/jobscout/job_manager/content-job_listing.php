@@ -80,6 +80,15 @@ $company_name = get_post_meta( get_the_ID(), '_company_name', true );
 
 			<?php do_action( 'job_listing_meta_end' ); ?>
 		</div>		
+
+		<?php
+		// Short description under badges (uses job excerpt)
+		$job_excerpt = get_the_excerpt();
+		if ( ! empty( $job_excerpt ) ) : ?>
+			<div class="job-desc">
+				<?php echo wp_kses_post( wpautop( wp_trim_words( $job_excerpt, 40 ) ) ); ?>
+			</div>
+		<?php endif; ?>
 	</div>
 
 	<?php if( $job_featured ){ ?>
