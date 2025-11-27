@@ -2555,6 +2555,10 @@ section.top-job-section {
 section.top-job-section .section-title {
   text-align: center;
   margin-bottom: 40px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .top-job-section .row .job_listings .job_listings {
@@ -2570,12 +2574,13 @@ section.top-job-section .section-title {
   margin-right: 2.5%;
   margin-bottom: 3%;
   border-radius: 5px;
-  padding: 30px;
+  padding: 26px 30px;
   position: relative;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
   overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .top-job-section .row div.job_listings article:nth-child(2n) {
@@ -2619,6 +2624,17 @@ section.top-job-section .section-title {
   padding-right: 30px;
   font-size: 1.1112em;
   line-height: 1.45em;
+  font-weight: 700;
+}
+
+.top-job-section .row div.job_listings article .job-meta-top {
+  margin-top: 6px;
+  font-size: 0.8em;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.top-job-section .row div.job_listings article .job-meta-top .job-created-label {
+  margin-right: 4px;
 }
 
 .top-job-section .row div.job_listings article .company-name {
@@ -2629,14 +2645,29 @@ section.top-job-section .section-title {
   margin-top: 5px;
 }
 
+.top-job-section .row div.job_listings article .job-badges {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.top-job-section .row div.job_listings article .job-badge {
+  font-size: 0.7778em;
+  border-radius: 3px;
+  padding: 4px 12px;
+  background: #f2f2f2;
+  color: #777777;
+}
+
 .top-job-section .row div.job_listings article .company-name::before {
   content: "@";
 }
 
 .top-job-section .row div.job_listings article .entry-meta {
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  margin-top: 15px;
-  padding-top: 15px;
+  border-top: none;
+  margin-top: 8px;
+  padding-top: 0;
   font-size: 1em;
 }
 
@@ -2679,9 +2710,9 @@ section.top-job-section .section-title {
 .job_listing li.job-type {
   list-style: none;
   font-size: 0.7778em;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 700;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 600;
   display: inline-block;
   border-radius: 3px;
   padding: 4px 10px;
@@ -2725,9 +2756,9 @@ section.top-job-section .section-title {
   font-size: 0.8888em;
   text-transform: uppercase;
   letter-spacing: 1px;
-  background: #2ace5e;
+  background: #ffffff;
   border-radius: 5px;
-  color: #fff;
+  color: #f7941d;
   padding: 12px 20px 12px 45px;
   border: 1px solid #f7941d;
   position: relative;

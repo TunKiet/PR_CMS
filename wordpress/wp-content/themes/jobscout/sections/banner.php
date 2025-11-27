@@ -1,16 +1,21 @@
 <style>
 .job-search-form {
     display: flex;
-    align-items: center;
+    align-items: stretch;
     gap: 0;
-    max-width: 1000px;
-    margin: 0 auto;
+    max-width: 770px;
+    width: 100%;
+    margin: 25px 0 0;
+    background: #ffffff;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
 }
 
 .search-input-wrapper,
 .location-select-wrapper {
     position: relative;
-    background: white;
+    background: #ffffff;
     display: flex;
     align-items: center;
     padding: 0 20px;
@@ -18,12 +23,13 @@
 }
 
 .search-input-wrapper {
-    flex: 1;
-    min-width: 350px;
+    flex: 1.3;
+    min-width: 340px;
 }
 
 .location-select-wrapper {
-    min-width: 250px;
+    flex: 0.9;
+    min-width: 220px;
     border-left: 1px solid #e0e0e0;
 }
 
@@ -58,21 +64,23 @@
 }
 
 .search-button {
-    background: #ff6b35;
-    color: white;
+    background: #f7941d;
+    color: #ffffff;
     border: none;
-    padding: 0 35px;
+    padding: 0 38px;
     height: 60px;
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 0.5px;
+    text-transform: uppercase;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, color 0.3s ease;
     white-space: nowrap;
 }
 
 .search-button:hover {
-    background: #ff5722;
+    background: #ffffff;
+    color: #f7941d;
 }
 
 /* Responsive */
@@ -80,6 +88,8 @@
     .job-search-form {
         flex-direction: column;
         width: 100%;
+        box-shadow: none;
+        border-radius: 0;
     }
     
     .search-input-wrapper,

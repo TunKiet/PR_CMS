@@ -1,14 +1,11 @@
 <?php
 /**
- * The template for displaying the footer
- *
- * Contains the closing of the #content div and all content after.
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ * Custom footer layout for JobScout.
+ * Newsletter bar + simple footer as per design.
  *
  * @package JobScout
  */
-    
+
     /**
      * After Content
      * 
@@ -33,7 +30,8 @@
     */
     do_action( 'jobscout_after_footer' );
 
-    wp_footer(); ?>
+    wp_footer();
+?>
 
 </body>
 </html>

@@ -162,31 +162,36 @@ endif;
 if( ! function_exists( 'jobscout_primary_nagivation' ) ) :
 /**
  * Primary Navigation.
-*/
+ */
 function jobscout_primary_nagivation(){ 
+
+    // If there is no primary menu assigned, don't render the navigation wrapper.
+    if ( ! has_nav_menu( 'primary' ) ) {
+        return;
+    }
 
     $post_job_label  = get_theme_mod( 'post_job_label', __( 'Post Jobs', 'jobscout' ) );
     $post_job_url    = get_theme_mod( 'post_job_url', '#' );
     ?>
-    	<nav id="site-navigation" class="main-navigation" role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+		<nav id="site-navigation" class="main-navigation" role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
         <button class="toggle-btn" data-toggle-target=".main-menu-modal" data-toggle-body-class="showing-main-menu-modal" aria-expanded="false" data-set-focus=".close-main-nav-toggle">
             <span class="toggle-bar"></span>
             <span class="toggle-bar"></span>
             <span class="toggle-bar"></span>
         </button>
             <?php
-    			wp_nav_menu( array(
-    				'theme_location' => 'primary',
-    				'menu_id'        => 'primary-menu',
-                    'menu_class'     => 'nav-menu',
-                    'container'      => false,
-                    'fallback_cb'    => 'jobscout_primary_menu_fallback',
-    			) );
-    		?>
-    	</nav><!-- #site-navigation -->
+				wp_nav_menu( array(
+					'theme_location' => 'primary',
+					'menu_id'        => 'primary-menu',
+                    'menu_class'   => 'nav-menu',
+                    'container'    => false,
+                    'fallback_cb'  => 'jobscout_primary_menu_fallback',
+				) );
+			?>
+		</nav><!-- #site-navigation -->
         <?php if( $post_job_label || $post_job_url ){ ?>
             <div class="btn-wrap">
-                <a class="btn" href="<?php echo esc_url( $post_job_url ) ?>"><?php echo esc_html( $post_job_label ) ?></a>
+                <a class="btn" href="<?php echo esc_url( $post_job_url ); ?>"><?php echo esc_html( $post_job_label ); ?></a>
             </div>
         <?php } 
   
@@ -210,20 +215,26 @@ endif;
 if( ! function_exists( 'jobscout_secondary_navigation' ) ) :
 /**
  * Secondary Navigation
-*/
-function jobscout_secondary_navigation(){ ?>
+ */
+function jobscout_secondary_navigation(){ 
+
+    // Only render secondary header bar when a secondary menu exists.
+    if ( ! has_nav_menu( 'secondary' ) ) {
+        return;
+    }
+    ?>
     <div class="header-t">
         <div class="container">
             <div class="left-block">
 	            <nav class="secondary-nav">
-            		<?php
-            			wp_nav_menu( array(
-            				'theme_location' => 'secondary',
-                            'menu_class'     => 'nav-menu',
-            				'menu_id'        => 'secondary-menu',
-                            'fallback_cb'    => 'jobscout_secondary_menu_fallback',
-            			) );
-            		?>
+					<?php
+						wp_nav_menu( array(
+							'theme_location' => 'secondary',
+                            'menu_class'   => 'nav-menu',
+							'menu_id'        => 'secondary-menu',
+                            'fallback_cb'  => 'jobscout_secondary_menu_fallback',
+						) );
+					?>
 	            </nav>
             </div>
         </div>
@@ -238,9 +249,7 @@ if( ! function_exists( 'jobscout_secondary_menu_fallback' ) ) :
 */
 function jobscout_secondary_menu_fallback(){
     if( current_user_can( 'manage_options' ) ){
-        echo '<ul id="secondary-menu" class="menu">';
-        echo '<li><a href="' . esc_url( admin_url( 'nav-menus.php' ) ) . '">' . esc_html__( 'Click here to add a menu', 'jobscout' ) . '</a></li>';
-        echo '</ul>';
+        // Intentionally left blank: no fallback markup to hide empty menu area.
     }
 }
 endif;
