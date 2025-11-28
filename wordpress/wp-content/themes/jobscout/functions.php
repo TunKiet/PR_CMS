@@ -1,4 +1,11 @@
 <?php
+// Chỉ load CSS custom cho trang Jobs (page_id=10)
+add_action('wp_enqueue_scripts', function() {
+	if (is_page(10)) {
+		wp_enqueue_style('jobs-page-10', get_template_directory_uri() . '/css/jobs-page-10.css', [], null);
+	}
+});
+require get_template_directory() . '/inc/custom-jobs-banner.php';
 /**
  * JobScout functions and definitions
  *

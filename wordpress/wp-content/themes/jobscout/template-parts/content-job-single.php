@@ -107,7 +107,7 @@
 <div class="custom-breadcrumb-bar" style="background:#f5f5f5;padding:14px 0 14px 32px;margin:0 auto 0 auto;max-width:1100px;font-size:1.08em;">
         <a href="/" style="color:#f27a2f;text-decoration:none;font-weight:500;">Home</a>
         <span style="color:#bbb;">/</span>
-        <a href="/jobs" style="color:#f27a2f;text-decoration:none;font-weight:500;">All Jobs</a>
+        <a href="/?page_id=10" style="color:#f27a2f;text-decoration:none;font-weight:500;">All Jobs</a>
         <span style="color:#bbb;">/</span>
         <span style="color:#222;font-weight:600;">Job Detail</span>
 </div>
