@@ -5,13 +5,39 @@
  *
  * @package JobScout
  */
-get_header(); ?>
+get_header();
+
+$contact_page_id = get_queried_object_id();
+
+// Allow overriding the banner title via a custom field, else use the page title.
+$contact_banner_title = get_post_meta( $contact_page_id, 'contact_banner_title', true );
+if ( empty( $contact_banner_title ) ) {
+	$contact_banner_title = get_the_title( $contact_page_id );
+}
+if ( empty( $contact_banner_title ) ) {
+	$contact_banner_title = __( 'Contact Us', 'jobscout' );
+}
+
+// Let editors pick a custom banner image via a custom field or the Featured Image.
+$contact_banner_image = get_post_meta( $contact_page_id, 'contact_banner_image', true );
+if ( $contact_banner_image && is_numeric( $contact_banner_image ) ) {
+	$contact_banner_image = wp_get_attachment_image_url( absint( $contact_banner_image ), 'full' );
+}
+
+if ( empty( $contact_banner_image ) && has_post_thumbnail( $contact_page_id ) ) {
+	$contact_banner_image = get_the_post_thumbnail_url( $contact_page_id, 'full' );
+}
+
+if ( empty( $contact_banner_image ) ) {
+	$contact_banner_image = get_template_directory_uri() . '/images/banner-image.jpg';
+}
+?>
 
     <!-- Contact Hero Banner -->
-    <div class="contact-hero-banner">
+    <div class="contact-hero-banner" style="background-image: url('<?php echo esc_url( $contact_banner_image ); ?>');">
         <div class="contact-hero-overlay"></div>
         <div class="contact-hero-content">
-            <h1 class="contact-hero-title">CONTACT US</h1>
+            <h1 class="contact-hero-title"><?php echo esc_html( $contact_banner_title ); ?></h1>
         </div>
     </div>
 

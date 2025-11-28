@@ -254,6 +254,43 @@ function jobscout_admin_scripts( $hook ){
 endif; 
 add_action( 'admin_enqueue_scripts', 'jobscout_admin_scripts' );
 
+/**
+ * Enqueue assets for the contact banner meta box.
+ *
+ * @param string $hook Current admin page.
+ */
+function jobscout_contact_banner_admin_assets( $hook ) {
+	if ( 'post.php' !== $hook && 'post-new.php' !== $hook ) {
+		return;
+	}
+
+	$screen = get_current_screen();
+	if ( ! $screen || 'page' !== $screen->post_type ) {
+		return;
+	}
+
+	$post_id = 0;
+	if ( isset( $_GET['post'] ) ) {
+		$post_id = absint( $_GET['post'] );
+	} elseif ( isset( $_POST['post_ID'] ) ) {
+		$post_id = absint( $_POST['post_ID'] );
+	}
+
+	if ( ! $post_id ) {
+		return;
+	}
+
+	$template = get_page_template_slug( $post_id );
+	if ( 'page-contact.php' !== $template ) {
+		return;
+	}
+
+	wp_enqueue_media();
+	wp_enqueue_style( 'jobscout-contact-banner-admin', get_template_directory_uri() . '/inc/css/contact-banner.css', array(), JOBSCOUT_THEME_VERSION );
+	wp_enqueue_script( 'jobscout-contact-banner-admin', get_template_directory_uri() . '/inc/js/contact-banner.js', array( 'jquery' ), JOBSCOUT_THEME_VERSION, true );
+}
+add_action( 'admin_enqueue_scripts', 'jobscout_contact_banner_admin_assets' );
+
 if( ! function_exists( 'jobscout_block_editor_styles' ) ) :
     /**
      * Enqueue editor styles for Gutenberg

@@ -1,0 +1,27 @@
+.jobscout-contact-banner-fields .jobscout-contact-banner-label {
+	display: block;
+	font-weight: 600;
+	margin-bottom: 6px;
+}
+
+.jobscout-contact-banner-image-field {
+	margin-top: 15px;
+}
+
+.jobscout-contact-banner-preview {
+	margin-bottom: 10px;
+	max-width: 100%;
+}
+
+.jobscout-contact-banner-preview img {
+	display: block;
+	height: auto;
+	border: 1px solid #ccc;
+	max-width: 100%;
+}
+
+.jobscout-contact-banner-remove.jobscout-hidden,
+.jobscout-contact-banner-preview.jobscout-hidden {
+	display: none;
+}
+

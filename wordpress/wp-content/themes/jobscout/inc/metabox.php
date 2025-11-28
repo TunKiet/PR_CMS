@@ -115,3 +115,123 @@ function jobscout_save_sidebar_layout( $post_id ){
     }           
 }
 add_action( 'save_post' , 'jobscout_save_sidebar_layout' );
+
+/**
+ * Contact banner meta box registration.
+ *
+ * Adds controls only when editing the Contact Page template.
+ *
+ * @param WP_Post $post Current post object.
+ */
+function jobscout_add_contact_banner_box( $post ) {
+	if ( empty( $post ) || 'page' !== $post->post_type ) {
+		return;
+	}
+
+	$template = get_page_template_slug( $post->ID );
+	if ( 'page-contact.php' !== $template ) {
+		return;
+	}
+
+	add_meta_box(
+		'jobscout_contact_banner',
+		__( 'Contact Banner', 'jobscout' ),
+		'jobscout_contact_banner_box_callback',
+		'page',
+		'normal',
+		'high'
+	);
+}
+add_action( 'add_meta_boxes_page', 'jobscout_add_contact_banner_box' );
+
+/**
+ * Render contact banner controls.
+ *
+ * @param WP_Post $post Current post object.
+ */
+function jobscout_contact_banner_box_callback( $post ) {
+	wp_nonce_field( 'jobscout_contact_banner_nonce', 'jobscout_contact_banner_nonce' );
+
+	$banner_title = get_post_meta( $post->ID, 'contact_banner_title', true );
+	$banner_image = get_post_meta( $post->ID, 'contact_banner_image', true );
+	$banner_image_url = '';
+
+	if ( $banner_image ) {
+		$banner_image_url = wp_get_attachment_image_url( absint( $banner_image ), 'large' );
+	}
+	?>
+	<div class="jobscout-contact-banner-fields">
+		<p>
+			<label class="jobscout-contact-banner-label" for="jobscout_contact_banner_title">
+				<?php esc_html_e( 'Banner title', 'jobscout' ); ?>
+			</label>
+			<input type="text" class="widefat" id="jobscout_contact_banner_title" name="jobscout_contact_banner_title" value="<?php echo esc_attr( $banner_title ); ?>" placeholder="<?php esc_attr_e( 'Defaults to the page title.', 'jobscout' ); ?>">
+		</p>
+
+		<div class="jobscout-contact-banner-image-field" data-title="<?php esc_attr_e( 'Select banner image', 'jobscout' ); ?>" data-button="<?php esc_attr_e( 'Use this image', 'jobscout' ); ?>">
+			<p class="jobscout-contact-banner-label">
+				<?php esc_html_e( 'Banner background image', 'jobscout' ); ?>
+			</p>
+			<div class="jobscout-contact-banner-preview <?php echo $banner_image_url ? '' : 'jobscout-hidden'; ?>">
+				<?php if ( $banner_image_url ) : ?>
+					<img src="<?php echo esc_url( $banner_image_url ); ?>" alt="">
+				<?php endif; ?>
+			</div>
+			<input type="hidden" id="jobscout_contact_banner_image" name="jobscout_contact_banner_image" value="<?php echo esc_attr( $banner_image ); ?>">
+			<button type="button" class="button jobscout-contact-banner-upload">
+				<?php esc_html_e( 'Select image', 'jobscout' ); ?>
+			</button>
+			<button type="button" class="button jobscout-contact-banner-remove <?php echo $banner_image_url ? '' : 'jobscout-hidden'; ?>">
+				<?php esc_html_e( 'Remove image', 'jobscout' ); ?>
+			</button>
+			<p class="description">
+				<?php esc_html_e( 'If no image is selected, the featured image or the theme default banner will be used.', 'jobscout' ); ?>
+			</p>
+		</div>
+	</div>
+	<?php
+}
+
+/**
+ * Save banner metadata for the contact page.
+ *
+ * @param int $post_id Post ID.
+ */
+function jobscout_save_contact_banner_meta( $post_id ) {
+	if ( ! isset( $_POST['jobscout_contact_banner_nonce'] ) || ! wp_verify_nonce( $_POST['jobscout_contact_banner_nonce'], 'jobscout_contact_banner_nonce' ) ) {
+		return;
+	}
+
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+		return;
+	}
+
+	if ( isset( $_POST['post_type'] ) && 'page' === $_POST['post_type'] ) {
+		if ( ! current_user_can( 'edit_page', $post_id ) ) {
+			return;
+		}
+	} else {
+		return;
+	}
+
+	$template = get_page_template_slug( $post_id );
+	if ( 'page-contact.php' !== $template ) {
+		return;
+	}
+
+	$title = isset( $_POST['jobscout_contact_banner_title'] ) ? sanitize_text_field( wp_unslash( $_POST['jobscout_contact_banner_title'] ) ) : '';
+	$image = isset( $_POST['jobscout_contact_banner_image'] ) ? absint( $_POST['jobscout_contact_banner_image'] ) : 0;
+
+	if ( $title ) {
+		update_post_meta( $post_id, 'contact_banner_title', $title );
+	} else {
+		delete_post_meta( $post_id, 'contact_banner_title' );
+	}
+
+	if ( $image ) {
+		update_post_meta( $post_id, 'contact_banner_image', $image );
+	} else {
+		delete_post_meta( $post_id, 'contact_banner_image' );
+	}
+}
+add_action( 'save_post_page', 'jobscout_save_contact_banner_meta' );

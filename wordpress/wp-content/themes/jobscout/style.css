@@ -3590,7 +3590,6 @@ body.page-template-contact-page .site-main {
   position: relative;
   width: 100vw;
   min-height: 500px;
-  background-image: url('images/banner-image.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -3666,16 +3665,17 @@ body.page-template-contact-page .contact-hero-banner {
 }
 
 .contact-section-title {
-  font-size: 1.8em;
-  font-weight: 700;
-  color: #333;
-  margin: 0 0 20px 0;
+  font-size: 1.4em;
+  font-weight: 600;
+  color: #4a4a4a;
+  margin: 0 0 10px 0;
+  text-transform: none;
 }
 
 .contact-address {
-  font-size: 1.1em;
-  color: #666;
-  margin: 0;
+  font-size: 0.95em;
+  color: #8a8a8a;
+  margin: 0 0 30px 0;
   font-weight: 400;
 }
 
@@ -3704,17 +3704,17 @@ body.page-template-contact-page .contact-hero-banner {
 }
 
 .contact-column-title {
-  font-size: 1.5em;
-  font-weight: 700;
-  color: #333;
-  margin: 0 0 15px 0;
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #4a4a4a;
+  margin: 0 0 8px 0;
 }
 
 .contact-subtitle {
-  font-size: 1em;
-  color: #666;
-  margin: 0 0 15px 0;
-  line-height: 1.6;
+  font-size: 0.9em;
+  color: #8a8a8a;
+  margin: 0 0 12px 0;
+  line-height: 1.5;
 }
 
 .contact-phone-item {
@@ -3723,23 +3723,23 @@ body.page-template-contact-page .contact-hero-banner {
 
 .contact-phone-item strong {
   display: block;
-  font-size: 1em;
-  color: #333;
-  font-weight: 700;
-  margin-bottom: 5px;
+  font-size: 0.95em;
+  color: #4a4a4a;
+  font-weight: 600;
+  margin-bottom: 3px;
 }
 
 .contact-phone {
-  font-size: 1.1em;
-  color: #333;
+  font-size: 1em;
+  color: #000;
   font-weight: 600;
 }
 
 .contact-description {
-  font-size: 0.95em;
-  color: #666;
-  line-height: 1.6;
-  margin: 20px 0 0 0;
+  font-size: 0.85em;
+  color: #8a8a8a;
+  line-height: 1.5;
+  margin: 15px 0 0 0;
 }
 
 .contact-link {
