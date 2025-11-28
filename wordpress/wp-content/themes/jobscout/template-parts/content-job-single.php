@@ -101,8 +101,18 @@
 </style>
 <style>
 </style>
-                                                                                </div>
-                                                                                <div class="job-header-info">
+                                                                                                                                                                </div>
+
+<!-- Custom breadcrumb/menu bar: Home / All Jobs / Job Detail -->
+<div class="custom-breadcrumb-bar" style="background:#f5f5f5;padding:14px 0 14px 32px;margin:0 auto 0 auto;max-width:1100px;font-size:1.08em;">
+        <a href="/" style="color:#f27a2f;text-decoration:none;font-weight:500;">Home</a>
+        <span style="color:#bbb;">/</span>
+        <a href="/jobs" style="color:#f27a2f;text-decoration:none;font-weight:500;">All Jobs</a>
+        <span style="color:#bbb;">/</span>
+        <span style="color:#222;font-weight:600;">Job Detail</span>
+</div>
+
+<div class="job-header-info">
                 <style>
                         .job-header-block-custom {
                                 display: flex;
@@ -235,9 +245,43 @@
                                 </div>
                         </div>
                         <div class="job-header-actions-custom">
-                                <button id="share-btn" class="job-btn-custom job-btn-outline-custom">SHARE</button>
-                                <button id="apply-btn" class="job-btn-custom job-btn-orange-custom">APPLY JOB</button>
+                                                                                                                                                         <button id="share-btn" class="job-btn-custom job-btn-outline-custom">SHARE</button>
+                                                                                                                                                         <button id="apply-btn" class="job-btn-custom job-btn-orange-custom">APPLY JOB</button>
                         </div>
+                                                                                                                         <script>
+                                                                                                                         // SHARE button: copy current URL to clipboard and alert
+                                                                                                                         document.addEventListener('DOMContentLoaded', function() {
+                                                                                                                                 var shareBtn = document.getElementById('share-btn');
+                                                                                                                                 if (shareBtn) {
+                                                                                                                                         shareBtn.addEventListener('click', function() {
+                                                                                                                                                 var url = window.location.href;
+                                                                                                                                                 if (navigator.clipboard) {
+                                                                                                                                                         navigator.clipboard.writeText(url).then(function() {
+                                                                                                                                                                 alert('Link copied to clipboard!');
+                                                                                                                                                         }, function() {
+                                                                                                                                                                 prompt('Copy this link:', url);
+                                                                                                                                                         });
+                                                                                                                                                 } else {
+                                                                                                                                                         prompt('Copy this link:', url);
+                                                                                                                                                 }
+                                                                                                                                         });
+                                                                                                                                 }
+
+                                                                                                                                 // APPLY JOB button: scroll to form if exists, else open mailto
+                                                                                                                                 var applyBtn = document.getElementById('apply-btn');
+                                                                                                                                 if (applyBtn) {
+                                                                                                                                         applyBtn.addEventListener('click', function() {
+                                                                                                                                                 var form = document.querySelector('.application_form, #application_form, form[action*="apply"], form[action*="job"]');
+                                                                                                                                                 if (form) {
+                                                                                                                                                         form.scrollIntoView({behavior: 'smooth'});
+                                                                                                                                                         form.querySelector('input,textarea,button,select')?.focus();
+                                                                                                                                                 } else {
+                                                                                                                                                         window.location.href = 'mailto:hr@example.com?subject=Job Application: ' + encodeURIComponent(document.title);
+                                                                                                                                                 }
+                                                                                                                                         });
+                                                                                                                                 }
+                                                                                                                         });
+                                                                                                                         </script>
                 </div>
                                                                         </div>
                                                                 </div>
@@ -512,17 +556,74 @@
                                                                                                         </div>
                                                                                                         <div class="job-main-right-custom">
                                                                                                                 <!-- Sidebar content here -->
-                                                                                                                <div style="background:#fff;padding:24px;border-radius:8px;">
-                                                                                                                        <div style="font-weight:600;margin-bottom:8px;">Staff Rating</div>
-                                                                                                                        <div style="font-size:1.5em;color:#f4a259;">
-                                                                                                                                ★★★★☆ <span style="color:#333;font-size:1em;vertical-align:middle;">4.0</span>
-                                                                                                                        </div>
-                                                                                                                </div>
-                                                                                                                <div style="background:#fff;padding:24px;border-radius:8px;">
-                                                                                                                        <div style="font-weight:600;margin-bottom:8px;">Company Photos</div>
-                                                                                                                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Company Photo" style="width:100%;border-radius:6px;object-fit:cover;" />
-                                                                                                                        <div style="position:absolute;top:16px;right:16px;background:rgba(0,0,0,0.5);color:#fff;padding:2px 8px;border-radius:12px;font-size:0.95em;">+5</div>
-                                                                                                                </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                <div class="sidebar-box-custom">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <div class="sidebar-title-custom">Staff Rating</div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <div class="sidebar-rating-row">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <span class="sidebar-stars">★★★★☆</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <span class="sidebar-rating-num">4.0</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                <div class="sidebar-box-custom">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <div class="sidebar-title-custom">Company Photos</div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <div class="sidebar-photo-wrap">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Company Photo" class="sidebar-photo-img" />
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <span class="sidebar-photo-overlay">+5</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                </div>
+<style>
+.sidebar-box-custom {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        padding: 22px 20px 20px 20px;
+        margin-bottom: 18px;
+        position: relative;
+}
+.sidebar-title-custom {
+        font-weight: 600;
+        margin-bottom: 10px;
+        font-size: 1.08em;
+}
+.sidebar-rating-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+}
+.sidebar-stars {
+        color: #f4a259;
+        font-size: 1.45em;
+        letter-spacing: 2px;
+}
+.sidebar-rating-num {
+        color: #f27a2f;
+        font-size: 1.15em;
+        font-weight: 600;
+        margin-left: 2px;
+}
+.sidebar-photo-wrap {
+        position: relative;
+        width: 100%;
+        margin-top: 6px;
+}
+.sidebar-photo-img {
+        width: 100%;
+        border-radius: 7px;
+        object-fit: cover;
+        display: block;
+}
+.sidebar-photo-overlay {
+        position: absolute;
+        top: 12px;
+        right: 14px;
+        background: rgba(0,0,0,0.55);
+        color: #fff;
+        padding: 2px 12px;
+        border-radius: 14px;
+        font-size: 1.08em;
+        font-weight: 500;
+        pointer-events: none;
+}
+</style>
                                                                                                         </div>
                                                                                                 </div>
                 </div>
