@@ -290,18 +290,19 @@ if( ! function_exists( 'jobscout_entry_content' ) ) :
  * Entry Content
 */
 function jobscout_entry_content(){ 
+    global $post;
     $ed_excerpt = get_theme_mod( 'ed_excerpt', true ); ?>
     <div class="entry-content" itemprop="text">
 		<?php
 			if( is_singular() || ! $ed_excerpt || ( get_post_format() != false ) ){
-                the_content();    
-    			wp_link_pages( array(
-    				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'jobscout' ),
-    				'after'  => '</div>',
-    			) );
-            }else{
-                the_excerpt();
-            }
+	            the_content();    
+	    			wp_link_pages( array(
+	    				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'jobscout' ),
+	    				'after'  => '</div>',
+	    			) );
+	        }else{
+	            the_excerpt();
+	        }
 		?>
 	</div><!-- .entry-content -->
     <?php
@@ -312,6 +313,51 @@ add_action( 'jobscout_page_entry_content', 'jobscout_entry_content', 15 );
 add_action( 'jobscout_single_post_entry_content', 'jobscout_entry_content', 15 );
 add_action( 'jobscout_single_post_entry_content', 'jobscout_entry_content', 15 );
 add_action( 'jobscout_before_single_job_content', 'jobscout_entry_content', 15 );
+
+/**
+ * Override content for NEWS page (ID 147) to show NEWEST BLOG ENTRIES grid
+ */
+function jobscout_news_page_content_override( $content ){
+    if( ! is_page( 147 ) ){
+        return $content;
+    }
+
+    $news_query = new WP_Query( array(
+        'post_type'           => 'post',
+        'posts_per_page'      => 8,
+        'ignore_sticky_posts' => true,
+    ) );
+
+    ob_start();
+    if( $news_query->have_posts() ) : ?>
+        <section class="news-blog-section">
+            <h2 class="news-blog-title"><?php esc_html_e( 'NEWEST BLOG ENTRIES', 'jobscout' ); ?></h2>
+            <div class="news-blog-grid">
+                <?php while( $news_query->have_posts() ) : $news_query->the_post(); ?>
+                    <article <?php post_class( 'news-blog-card' ); ?>>
+                        <a href="<?php the_permalink(); ?>" class="news-blog-thumb">
+                            <?php if( has_post_thumbnail() ){
+                                the_post_thumbnail( 'jobscout-blog' );
+                            }else{
+                                jobscout_fallback_svg_image( 'jobscout-blog' );
+                            } ?>
+                        </a>
+                        <div class="news-blog-content">
+                            <h3 class="news-blog-entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                            <div class="news-blog-excerpt"><?php echo wp_kses_post( wp_trim_words( get_the_excerpt(), 18, '...' ) ); ?></div>
+                            <a class="news-blog-readmore" href="<?php the_permalink(); ?>"><?php esc_html_e( 'Read More', 'jobscout' ); ?></a>
+                        </div>
+                    </article>
+                <?php endwhile; ?>
+            </div>
+        </section>
+    <?php
+    endif;
+    wp_reset_postdata();
+
+    return ob_get_clean();
+}
+add_filter( 'the_content', 'jobscout_news_page_content_override' );
 
 if( ! function_exists( 'jobscout_entry_footer' ) ) :
 /**
