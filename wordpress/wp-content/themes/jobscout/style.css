@@ -10,6 +10,239 @@
 .single-job_listing .entry-header[style*="background-image"] {
   display: none !important;
 }
+
+/*============================
+NEWS PAGE STYLES
+============================*/
+
+/* News Page Banner */
+.news-page-banner {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 60px;
+}
+
+.news-banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.news-banner-title {
+  color: #fff;
+  font-size: 2.5em;
+  font-weight: 700;
+  text-align: center;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* News Blog Section */
+.news-blog-section {
+  padding: 0 0 80px 0;
+}
+
+.news-section-title {
+  text-align: center;
+  font-size: 1.7223em;
+  font-weight: 700;
+  margin: 0 0 50px 0;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* News Blog Grid */
+.news-blog-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 40px 30px !important;
+  max-width: 1170px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* News Blog Card */
+.news-blog-card {
+  background: #fff;
+  border-radius: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin: 0 !important;
+}
+
+.news-blog-grid .news-blog-card.hentry {
+  margin: 0 !important;
+}
+
+.news-blog-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+/* News Blog Thumbnail */
+.news-blog-thumb {
+  flex: 0 0 200px;
+  width: 200px;
+  height: 150px;
+  overflow: hidden;
+  display: block;
+  position: relative;
+}
+
+.news-blog-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.news-blog-card:hover .news-blog-thumb img {
+  transform: scale(1.05);
+}
+
+/* News Blog Content */
+.news-blog-content {
+  flex: 1;
+  padding: 20px 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.news-blog-entry-title {
+  font-size: 1.1em;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+  line-height: 1.4;
+}
+
+.news-blog-entry-title a {
+  color: #000;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.news-blog-entry-title a:hover {
+  color: #2ace5e;
+}
+
+.news-blog-excerpt {
+  font-size: 0.888em;
+  color: #666;
+  line-height: 1.6;
+  margin: 0 0 15px 0;
+  flex: 1;
+}
+
+.news-blog-readmore {
+  display: inline-block;
+  color: #f4a259;
+  font-size: 0.888em;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  align-self: flex-start;
+}
+
+.news-blog-readmore:hover {
+  color: #e08a3d;
+}
+
+/* Remove sidebar for news page */
+.page-template-page-news #primary {
+  width: 100%;
+  max-width: 100%;
+}
+
+.page-template-page-news .site-content {
+  padding: 0;
+}
+
+.page-template-page-news .news-page-main {
+  padding: 0;
+}
+
+/* Responsive Design */
+@media only screen and (max-width: 1024px) {
+  .news-blog-grid {
+    gap: 30px 20px;
+    padding: 0 20px;
+  }
+  
+  .news-blog-thumb {
+    flex: 0 0 180px;
+    width: 180px;
+    height: 135px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .news-banner-title {
+    font-size: 2em;
+  }
+  
+  .news-blog-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  .news-blog-card {
+    flex-direction: column;
+  }
+  
+  .news-blog-thumb {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 200px;
+  }
+  
+  .news-blog-content {
+    padding: 20px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .news-page-banner {
+    height: 200px;
+  }
+  
+  .news-banner-title {
+    font-size: 1.5em;
+    padding: 0 20px;
+  }
+  
+  .news-section-title {
+    font-size: 1.4em;
+    margin-bottom: 30px;
+  }
+  
+  .news-blog-grid {
+    padding: 0 15px;
+  }
+  
+  .news-blog-thumb {
+    height: 180px;
+  }
+}
+
 /*!
 Theme Name: JobScout
 Theme URI: https://rarathemes.com/wordpress-themes/jobscout/
