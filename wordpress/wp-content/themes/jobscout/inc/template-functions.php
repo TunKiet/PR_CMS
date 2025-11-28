@@ -328,6 +328,9 @@ function jobscout_news_page_content_override( $content ){
     ) );
 
     ob_start();
+    // Debug: how many posts are found for NEWEST BLOG ENTRIES on page 147
+    echo '<!-- News override found posts: ' . intval( $news_query->post_count ) . ' -->';
+
     if( $news_query->have_posts() ) : ?>
         <section class="news-blog-section">
             <h2 class="news-blog-title"><?php esc_html_e( 'NEWEST BLOG ENTRIES', 'jobscout' ); ?></h2>

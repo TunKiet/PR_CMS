@@ -7,7 +7,7 @@
  * @package JobScout
  */
 
-get_header('about'); ?>
+get_header(); ?>
 
 <style>
 /* Reset default theme styles */
@@ -400,4 +400,4 @@ body.page-template-page-about .widget-area {
     <?php endwhile; ?>
 </div>
 
-<?php get_footer('about'); ?>
+<?php get_footer(); ?>

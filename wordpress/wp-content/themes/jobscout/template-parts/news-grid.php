@@ -5,13 +5,8 @@
  * @package JobScout
  */
 
-// Get number of posts to display from metabox or use default
-$posts_per_page = get_post_meta( get_the_ID(), '_news_posts_count', true );
-if ( ! $posts_per_page || $posts_per_page < 1 ) {
-    $posts_per_page = 8;
-}
-// Force to integer
-$posts_per_page = absint( $posts_per_page );
+// Always show the latest 8 blog posts from database for NEWEST BLOG ENTRIES
+$posts_per_page = 8;
 
 // Get section title from metabox or use default
 $section_title = get_post_meta( get_the_ID(), '_news_section_title', true );
@@ -21,18 +16,12 @@ if ( ! $section_title ) {
 
 $news_query = new WP_Query( array(
     'post_type'           => 'post',
-    'posts_per_page'      => intval( $posts_per_page ),
+    'posts_per_page'      => $posts_per_page,
     'ignore_sticky_posts' => true,
     'post_status'         => 'publish',
-    'no_found_rows'       => false,
-    'nopaging'            => false,
+    'orderby'             => 'date',
+    'order'               => 'DESC',
 ) );
-
-// Debug output (remove after testing)
-echo '<!-- Debug: Posts per page = ' . $posts_per_page . ' -->';
-echo '<!-- Debug: Found posts = ' . $news_query->found_posts . ' -->';
-echo '<!-- Debug: Post count = ' . $news_query->post_count . ' -->';
-echo '<!-- Debug: Max num pages = ' . $news_query->max_num_pages . ' -->';
 
 if ( $news_query->have_posts() ) : 
     // Store current post to restore later

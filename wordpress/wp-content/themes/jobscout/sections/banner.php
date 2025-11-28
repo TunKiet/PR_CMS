@@ -177,11 +177,32 @@ if ($ed_banner && has_custom_header()) { ?>
                                         <div class="location-select-wrapper">
                                             <i class="location-icon">📍</i>
                                             <select class="location-select" name="search_location">
-                                                <option value="tokyo">Tokyo</option>
-                                                <option value="osaka">Osaka</option>
-                                                <option value="kyoto">Kyoto</option>
-                                                <option value="yokohama">Yokohama</option>
-                                                <option value="nagoya">Nagoya</option>
+                                                <?php
+                                                // Lấy danh sách địa điểm từ Job Listings trong database
+                                                if ( function_exists( 'jobscout_get_all_job_locations' ) ) {
+                                                    $locations = jobscout_get_all_job_locations();
+                                                } else {
+                                                    $locations = array();
+                                                }
+
+                                                // Placeholder mặc định
+                                                echo '<option value="">' . esc_html__( 'Select location', 'jobscout' ) . '</option>';
+
+                                                if ( ! empty( $locations ) ) {
+                                                    // Loại bỏ các địa điểm chứa từ "usa" (không phân biệt hoa/thường)
+                                                    $locations = array_filter( $locations, function( $loc ) {
+                                                        return ( stripos( $loc, 'usa' ) === false );
+                                                    } );
+
+                                                    // Sắp xếp địa điểm theo A-Z (theo tên hiển thị)
+                                                    natcasesort( $locations );
+
+                                                    foreach ( $locations as $loc ) {
+                                                        $value = sanitize_title( $loc );
+                                                        echo '<option value="' . esc_attr( $value ) . '">' . esc_html( $loc ) . '</option>';
+                                                    }
+                                                }
+                                                ?>
                                             </select>
                                         </div>
 
