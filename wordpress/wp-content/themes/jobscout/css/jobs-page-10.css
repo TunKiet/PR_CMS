@@ -1,0 +1,116 @@
+/* Style nút load more jobs giống mẫu */
+body.page-id-10 .load_more_jobs,
+body.page-id-10 .load_more_jobs:visited {
+  display: inline-block;
+  padding: 12px 38px;
+  border: 2px solid #ff9800;
+  color: #ff9800;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1.1em;
+  background: #fff;
+  transition: all 0.2s;
+  margin: 32px auto 0 auto;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: none;
+}
+body.page-id-10 .load_more_jobs:hover,
+body.page-id-10 .load_more_jobs:active {
+  background: #ff9800;
+  color: #fff;
+  border-color: #ff9800;
+}
+/* Chỉ áp dụng cho trang Jobs (page_id=10) - lưới 2 cột, giống mẫu */
+body.page-id-10 .job_listings {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px 24px;
+  justify-content: flex-start;
+}
+body.page-id-10 .job-card, body.page-id-10 article.job_listing {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 24px 20px;
+  width: calc(50% - 12px);
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 260px;
+}
+body.page-id-10 .job-card-header, body.page-id-10 .company-logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+body.page-id-10 .job-card-logo, body.page-id-10 .company-logo {
+  width: 56px;
+  height: 56px;
+  margin-right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body.page-id-10 .job-card-logo img, body.page-id-10 .company-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 6px;
+}
+body.page-id-10 .job-card-title, body.page-id-10 .entry-title {
+  font-size: 1.1rem;
+  margin: 0 0 4px 0;
+}
+body.page-id-10 .job-card-company, body.page-id-10 .company-name {
+  font-size: 0.95rem;
+  color: #888;
+}
+body.page-id-10 .job-card-meta, body.page-id-10 .entry-meta {
+  margin-bottom: 10px;
+}
+body.page-id-10 .job-card-badge, body.page-id-10 .job-badge {
+  display: inline-block;
+  background: #f5f5f5;
+  color: #333;
+  border-radius: 4px;
+  padding: 2px 10px;
+  font-size: 0.92em;
+  margin-right: 6px;
+  margin-bottom: 4px;
+}
+body.page-id-10 .job-card-date, body.page-id-10 .job-created-date {
+  color: #ff9800;
+  font-weight: 500;
+  margin-right: 10px;
+}
+body.page-id-10 .job-card-desc, body.page-id-10 .job-desc {
+  font-size: 0.98em;
+  color: #444;
+  margin-top: 8px;
+}
+body.page-id-10 .job-card-featured, body.page-id-10 .featured-label {
+  margin-top: 10px;
+  color: #fff;
+  background: #ff9800;
+  display: inline-block;
+  padding: 2px 12px;
+  border-radius: 4px;
+  font-size: 0.95em;
+  font-weight: 600;
+}
+@media (max-width: 900px) {
+  body.page-id-10 .job-card, body.page-id-10 article.job_listing {
+    width: 100%;
+  }
+  body.page-id-10 .job_listings {
+    flex-direction: column;
+    gap: 24px 0;
+  }
+}
+body.page-id-10 .jobs-main-content-2col {
+  padding-bottom: 60px;
+}
+body.page-id-10 .jobs-hero {
+  margin-bottom: 0;
+}
