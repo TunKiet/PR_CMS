@@ -1,0 +1,318 @@
+/* About Page Custom Styles - Giống 100% ảnh mẫu */
+
+/* Global Font */
+* {
+    font-family: "Nunito Sans", sans-serif;
+}
+
+/* Reset default theme styles */
+body.page-template-page-about #primary,
+body.page-template-page-about .content-area {
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+}
+
+body.page-template-page-about #content {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+body.page-template-page-about .site-main {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Hide sidebar on about page */
+body.page-template-page-about #secondary,
+body.page-template-page-about .widget-area {
+    display: none !important;
+}
+
+/* About Page Wrapper */
+.about-page-wrapper {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Hero Section */
+.about-hero {
+    position: relative;
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.about-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.about-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.about-hero h1 {
+    font-size: 64px;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.3;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    font-family: "Nunito Sans", sans-serif;
+}
+
+/* About Us Section */
+.about-us-section {
+    background: #f8f8f8;
+    padding: 120px 0;
+}
+
+.about-us-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.about-us-title {
+    text-align: center;
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 100px;
+    color: #2c2c2c;
+    letter-spacing: 4px;
+    font-family: "Nunito Sans", sans-serif;
+}
+
+.about-us-content {
+    display: flex;
+    gap: 80px;
+    align-items: flex-start;
+}
+
+.about-us-image {
+    flex: 0 0 500px;
+}
+
+.about-us-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.about-us-text {
+    flex: 1;
+}
+
+.about-item {
+    margin-bottom: 45px;
+}
+
+.about-item h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #2c2c2c;
+    font-family: "Nunito Sans", sans-serif;
+}
+
+.about-item p {
+    font-size: 16px;
+    line-height: 1.9;
+    color: #555;
+    margin: 0;
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: 300;
+}
+
+/* Services Section */
+.services-section {
+    background: #ffffff;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.services-title {
+    font-size: 28px;
+    color: #ff6b35;
+    margin-bottom: 50px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    font-family: "Nunito Sans", sans-serif;
+}
+
+.services-description {
+    max-width: 1100px;
+    margin: 0 auto;
+    font-size: 16px;
+    line-height: 1.9;
+    color: #555;
+    padding: 0 20px;
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: 300;
+}
+
+/* Company Info Section */
+.company-info-section {
+    background: #f8f8f8;
+    padding: 120px 0;
+}
+
+.company-info-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    gap: 80px;
+    align-items: center;
+}
+
+.company-info-text {
+    flex: 1;
+}
+
+.company-info-item {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.company-info-label {
+    font-size: 16px;
+    font-weight: 700;
+    color: #2c2c2c;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+    font-family: "Nunito Sans", sans-serif;
+}
+
+.company-info-value {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.6;
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: 300;
+}
+
+.company-info-image {
+    flex: 0 0 500px;
+}
+
+.company-info-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Newsletter Section */
+.newsletter-section {
+    background: #ff6b35;
+    padding: 60px 0;
+}
+
+.newsletter-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.newsletter-title-wrapper {
+    flex: 0 0 280px;
+}
+
+.newsletter-title {
+    font-size: 28px;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.4;
+    font-weight: 600;
+    font-family: "Nunito Sans", sans-serif;
+}
+
+.newsletter-form {
+    flex: 1;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.newsletter-input {
+    flex: 1;
+    padding: 16px 28px;
+    border: none;
+    font-size: 15px;
+    border-radius: 4px;
+    font-family: "Nunito Sans", sans-serif;
+}
+
+.newsletter-button {
+    padding: 16px 50px;
+    background: transparent;
+    border: 2px solid #ffffff;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    font-family: "Nunito Sans", sans-serif;
+}
+
+.newsletter-button:hover {
+    background: #ffffff;
+    color: #ff6b35;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .about-hero h1 {
+        font-size: 32px;
+    }
+    
+    .about-us-content,
+    .company-info-container {
+        flex-direction: column;
+    }
+    
+    .about-us-image,
+    .company-info-image {
+        flex: 1;
+        max-width: 100%;
+    }
+    
+    .newsletter-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .newsletter-form {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .newsletter-input,
+    .newsletter-button {
+        width: 100%;
+    }
+}
