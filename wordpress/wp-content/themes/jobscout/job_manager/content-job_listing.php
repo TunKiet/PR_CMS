@@ -80,16 +80,25 @@ $company_name = get_post_meta( get_the_ID(), '_company_name', true );
 
 			<?php do_action( 'job_listing_meta_end' ); ?>
 		</div>		
-
-		<?php
-		// Short description under badges (uses job excerpt)
-		$job_excerpt = get_the_excerpt();
-		if ( ! empty( $job_excerpt ) ) : ?>
-			<div class="job-desc">
-				<?php echo wp_kses_post( wpautop( wp_trim_words( $job_excerpt, 40 ) ) ); ?>
-			</div>
-		<?php endif; ?>
 	</div>
+
+	<?php
+	// Short description under badges (uses job excerpt)
+	$job_excerpt = get_the_excerpt();
+	if ( ! empty( $job_excerpt ) ) :
+		// Tách excerpt thành tối đa 3 câu để hiển thị dạng gạch đầu dòng
+		$raw_text  = wp_strip_all_tags( $job_excerpt );
+		$parts     = preg_split( '/\.\s+/', $raw_text, 3, PREG_SPLIT_NO_EMPTY );
+		if ( ! empty( $parts ) ) : ?>
+			<div class="job-desc">
+				<ul>
+					<?php foreach ( $parts as $sentence ) : ?>
+						<li><?php echo esc_html( rtrim( $sentence, '.' ) ); ?>.</li>
+					<?php endforeach; ?>
+				</ul>
+			</div>
+		<?php endif;
+	endif; ?>
 
 	<?php if( $job_featured ){ ?>
 		<div class="featured-label"><?php esc_html_e( 'Featured', 'jobscout' ); ?></div>
