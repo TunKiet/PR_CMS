@@ -320,6 +320,9 @@ body.page-template-page-about .widget-area {
         $ceo = get_post_meta(get_the_ID(), 'ceo', true);
         $employees = get_post_meta(get_the_ID(), 'employees', true);
         $company_image = get_post_meta(get_the_ID(), 'company_image', true);
+        $newsletter_title = get_post_meta(get_the_ID(), 'newsletter_title', true);
+        $newsletter_placeholder = get_post_meta(get_the_ID(), 'newsletter_placeholder', true);
+        $newsletter_button = get_post_meta(get_the_ID(), 'newsletter_button', true);
         ?>
         
         <!-- Hero Section -->
@@ -402,11 +405,11 @@ body.page-template-page-about .widget-area {
         <section class="newsletter-section">
             <div class="newsletter-container">
                 <div class="newsletter-title-wrapper">
-                    <h3 class="newsletter-title">Subscribe To<br>Our Newsletter</h3>
+                    <h3 class="newsletter-title"><?php echo wp_kses_post($newsletter_title ? nl2br($newsletter_title) : 'Subscribe To<br>Our Newsletter'); ?></h3>
                 </div>
                 <form class="newsletter-form" action="#" method="post">
-                    <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
-                    <button type="submit" class="newsletter-button">Subscribe</button>
+                    <input type="email" class="newsletter-input" placeholder="<?php echo esc_attr($newsletter_placeholder ? $newsletter_placeholder : 'Enter your email address'); ?>" required>
+                    <button type="submit" class="newsletter-button"><?php echo esc_html($newsletter_button ? $newsletter_button : 'SUBSCRIBE'); ?></button>
                 </form>
             </div>
         </section>

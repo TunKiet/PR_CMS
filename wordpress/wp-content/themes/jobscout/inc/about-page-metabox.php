@@ -42,6 +42,15 @@ function about_page_add_meta_boxes() {
         'normal',
         'high'
     );
+    
+    add_meta_box(
+        'about_page_newsletter',
+        'Newsletter Section',
+        'about_page_newsletter_callback',
+        'page',
+        'normal',
+        'high'
+    );
 }
 add_action('add_meta_boxes', 'about_page_add_meta_boxes');
 
@@ -149,6 +158,27 @@ function about_page_company_callback($post) {
     <?php
 }
 
+// Newsletter Section Callback
+function about_page_newsletter_callback($post) {
+    $newsletter_title = get_post_meta($post->ID, 'newsletter_title', true);
+    $newsletter_placeholder = get_post_meta($post->ID, 'newsletter_placeholder', true);
+    $newsletter_button = get_post_meta($post->ID, 'newsletter_button', true);
+    ?>
+    <p>
+        <label for="newsletter_title">Newsletter Title:</label><br>
+        <input type="text" id="newsletter_title" name="newsletter_title" value="<?php echo esc_attr($newsletter_title); ?>" style="width: 100%;" placeholder="Subscribe To Our Newsletter">
+    </p>
+    <p>
+        <label for="newsletter_placeholder">Email Input Placeholder:</label><br>
+        <input type="text" id="newsletter_placeholder" name="newsletter_placeholder" value="<?php echo esc_attr($newsletter_placeholder); ?>" style="width: 100%;" placeholder="Enter your email address">
+    </p>
+    <p>
+        <label for="newsletter_button">Button Text:</label><br>
+        <input type="text" id="newsletter_button" name="newsletter_button" value="<?php echo esc_attr($newsletter_button); ?>" style="width: 100%;" placeholder="SUBSCRIBE">
+    </p>
+    <?php
+}
+
 // Save meta box data
 function about_page_save_meta_box_data($post_id) {
     if (!isset($_POST['about_page_meta_box_nonce'])) {
@@ -172,23 +202,37 @@ function about_page_save_meta_box_data($post_id) {
         'hero_image',
         'hero_title',
         'about_image',
-        'vision_text',
         'mission_title',
-        'mission_text',
-        'core_value_text',
-        'services_title',
-        'services_description',
         'established_year',
         'head_office',
         'capital',
         'ceo',
         'employees',
-        'company_image'
+        'company_image',
+        'newsletter_title',
+        'newsletter_placeholder',
+        'newsletter_button'
     );
     
+    // Text fields
     foreach ($fields as $field) {
         if (isset($_POST[$field])) {
             update_post_meta($post_id, $field, sanitize_text_field($_POST[$field]));
+        }
+    }
+    
+    // Textarea fields (preserve line breaks)
+    $textarea_fields = array(
+        'vision_text',
+        'mission_text',
+        'core_value_text',
+        'services_title',
+        'services_description'
+    );
+    
+    foreach ($textarea_fields as $field) {
+        if (isset($_POST[$field])) {
+            update_post_meta($post_id, $field, sanitize_textarea_field($_POST[$field]));
         }
     }
 }
