@@ -1,3 +1,15 @@
+/* Highlight active menu item in orange like the design */
+.main-navigation .menu > .current-menu-item > a,
+.main-navigation .menu > .current_page_item > a,
+.main-navigation .menu > .current-menu-ancestor > a,
+.main-navigation .menu > .current_page_ancestor > a {
+  color: #f4a259 !important;
+  border-bottom: 2px solid #f4a259;
+}
+/* Hide header banner on single job detail page */
+.single-job_listing .entry-header[style*="background-image"] {
+  display: none !important;
+}
 /*!
 Theme Name: JobScout
 Theme URI: https://rarathemes.com/wordpress-themes/jobscout/
@@ -736,7 +748,8 @@ input[type="datetime-local"]:focus,
 input[type="color"]:focus,
 textarea:focus {
   color: #000;
-  outline: thin dotted;
+  outline: none;
+  box-shadow: none;
 }
 
 select {
@@ -1264,7 +1277,14 @@ form.search-form input.search-submit:hover {
 }
 
 form.search-form input.search-submit:focus {
-  outline: thin dotted #000;
+  outline: none;
+}
+
+/* Remove dotted focus outline only for the main search form */
+form.search-form input.search-field:focus,
+form.search-form input.search-submit:focus {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 #secondary .widget .widget-title,
@@ -2172,7 +2192,7 @@ body.home:not(.banner-enabled) .site-header {
 }
 
 .site-branding .site-title a {
-  color: #2ace5e;
+  color: #000000;
 }
 
 .site-branding .site-description {
@@ -2180,6 +2200,13 @@ body.home:not(.banner-enabled) .site-header {
   font-size: 0.778em;
   color: #6a6a6a;
   font-weight: 400;
+}
+
+/* Solid black logo block for non-home pages */
+.site-logo-block {
+  width: 180px;
+  height: 40px;
+  background-color: #000000;
 }
 
 .header-main .menu-wrap {
@@ -2307,7 +2334,7 @@ SITE BANNER SECTION
   top: 50%;
   left: 0;
   right: 0;
-  text-align: center;
+  text-align: left;
   z-index: 9;
   -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);
@@ -2315,25 +2342,28 @@ SITE BANNER SECTION
 }
 
 .banner-caption .caption-inner {
-  max-width: 770px;
+  max-width: 900px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .banner-caption .title {
   margin: 0;
-  font-size: 2.5em;
+  font-size: 2.7em;
   color: #fff;
   font-weight: 800;
-  line-height: 1.4;
+  line-height: 1.3;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .banner-caption .description {
   margin-top: 10px;
-  font-size: 1em;
+  font-size: 0.95em;
   color: #fff;
-  line-height: 1.5;
+  line-height: 1.6;
   font-weight: 400;
+  max-width: 650px;
 }
 
 .banner-caption .form-wrap {
@@ -2351,6 +2381,8 @@ SITE BANNER SECTION
 .banner-caption .search-filter-wrap .search-form {
   max-width: 540px;
   margin: 0 auto;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 .banner-caption .jobscout_job_filters .search_jobs {
@@ -2360,6 +2392,9 @@ SITE BANNER SECTION
   flex-wrap: wrap;
   border-radius: 5px;
   overflow: hidden;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.35);
 }
 
 .banner-caption .jobscout_job_filters .search_jobs div.filter_first,
@@ -2396,13 +2431,18 @@ SITE BANNER SECTION
 .banner-caption .jobscout_job_filters .search_jobs select {
   border-radius: 0;
   height: 60px;
-  border-top: none;
-  border-bottom: none;
-  border-right: none;
+  border: none;
   font-size: 0.8888em;
   font-weight: 400;
   padding: 10px 20px;
   color: #666;
+  background-color: transparent;
+}
+
+.banner-caption .jobscout_job_filters .search_jobs input:focus,
+.banner-caption .jobscout_job_filters .search_jobs select:focus {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .banner-caption .jobscout_job_filters .search_jobs input::placeholder {
@@ -2431,7 +2471,7 @@ SITE BANNER SECTION
   background-position: center;
   text-indent: 70px;
   overflow: hidden;
-  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  border-left: none;
 }
 
 .banner-caption .jobscout_job_filters .search_jobs input[type="submit"]:hover {
@@ -2450,7 +2490,7 @@ SITE BANNER WITH VIDEO
 
 .video-banner #wp-custom-header::before {
   content: "";
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0.45);
   position: absolute;
   top: 0;
   left: 0;
@@ -2543,6 +2583,10 @@ section.top-job-section {
 section.top-job-section .section-title {
   text-align: center;
   margin-bottom: 40px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .top-job-section .row .job_listings .job_listings {
@@ -2553,17 +2597,18 @@ section.top-job-section .section-title {
 
 .top-job-section .row div.job_listings article {
   width: 48%;
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
   margin-right: 2.5%;
   margin-bottom: 3%;
   border-radius: 5px;
-  padding: 30px;
+  padding: 26px 32px;
   position: relative;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
   overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
 .top-job-section .row div.job_listings article:nth-child(2n) {
@@ -2607,6 +2652,17 @@ section.top-job-section .section-title {
   padding-right: 30px;
   font-size: 1.1112em;
   line-height: 1.45em;
+  font-weight: 700;
+}
+
+.top-job-section .row div.job_listings article .job-meta-top {
+  margin-top: 6px;
+  font-size: 0.8em;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.top-job-section .row div.job_listings article .job-meta-top .job-created-label {
+  margin-right: 4px;
 }
 
 .top-job-section .row div.job_listings article .company-name {
@@ -2615,6 +2671,22 @@ section.top-job-section .section-title {
   font-weight: 400;
   line-height: 1.44em;
   margin-top: 5px;
+  display: none;
+}
+
+.top-job-section .row div.job_listings article .job-badges {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.top-job-section .row div.job_listings article .job-badge {
+  font-size: 0.7778em;
+  border-radius: 3px;
+  padding: 4px 12px;
+  background: #f2f2f2;
+  color: #777777;
 }
 
 .top-job-section .row div.job_listings article .company-name::before {
@@ -2622,24 +2694,30 @@ section.top-job-section .section-title {
 }
 
 .top-job-section .row div.job_listings article .entry-meta {
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  margin-top: 15px;
-  padding-top: 15px;
+  border-top: none;
+  margin-top: 14px;
+  padding-top: 0;
   font-size: 1em;
+}
+
+.top-job-section .row div.job_listings article .job-desc {
+  margin-top: 10px;
+  font-size: 0.9em;
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.75);
 }
 
 .top-job-section .row div.job_listings article .salary-amt,
 .top-job-section .row div.job_listings article .company-address {
-  font-size: 0.8888em;
-  line-height: 1.44em;
+  font-size: 0.85em;
+  line-height: 1.5em;
   font-weight: 400;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
+  color: rgba(0, 0, 0, 0.6);
 }
 
 .top-job-section .row div.job_listings article .salary-amt .currency {
-  font-weight: 900;
-  color: #2ace5e;
-  margin-right: 5px;
+  display: none;
 }
 
 .currency svg {
@@ -2650,8 +2728,7 @@ section.top-job-section .section-title {
 }
 
 .top-job-section .row div.job_listings article .company-address svg {
-  color: #2ace5e;
-  margin-right: 5px;
+  display: none;
 }
 
 .top-job-section .row div.job_listings article .entry-meta a {
@@ -2667,14 +2744,14 @@ section.top-job-section .section-title {
 .job_listing li.job-type {
   list-style: none;
   font-size: 0.7778em;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 700;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 600;
   display: inline-block;
-  border: 1px solid #2ace5e;
-  border-radius: 40px;
-  padding: 5px 20px;
-  color: #2ace5e;
+  border-radius: 3px;
+  padding: 4px 10px;
+  background: #f2f2f2;
+  color: #777777;
   margin-top: 10px;
   cursor: default;
 }
@@ -2713,17 +2790,17 @@ section.top-job-section .section-title {
   font-size: 0.8888em;
   text-transform: uppercase;
   letter-spacing: 1px;
-  background: #2ace5e;
+  background: #ffffff;
   border-radius: 5px;
-  color: #fff;
+  color: #f7941d;
   padding: 12px 20px 12px 45px;
-  border: 1px solid #2ace5e;
+  border: 1px solid #f7941d;
   position: relative;
 }
 
 .top-job-section div.job_listings .load_more_jobs:hover {
-  color: #2ace5e;
-  background: none;
+  color: #ffffff;
+  background: #f7941d;
 }
 
 .top-job-section div.job_listings .load_more_jobs::before {
@@ -2866,29 +2943,82 @@ CTA SECTION
   margin-bottom: 0;
 }
 
+.bg-cta-section {
+  padding: 80px 0;
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+  text-align: center;
+}
+
+.bg-cta-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.bg-cta-section .container,
+.bg-cta-section .widget {
+  position: relative;
+  z-index: 1;
+}
+
 section[class*="-section"] .widget_raratheme_companion_cta_widget .right {
-  text-align: left;
+  text-align: center;
 }
 
 section[class*="-section"] .widget_raratheme_companion_cta_widget .right .raratheme-cta-container {
   position: relative;
+  max-width: 760px;
+  margin: 0 auto;
 }
 
 section[class*="-section"] .widget_raratheme_companion_cta_widget .right .widget-title,
 section[class*="-section"] .widget_raratheme_companion_cta_widget .right .text-holder {
-  width: 65%;
+  width: 100%;
+}
+
+section[class*="-section"] .widget_raratheme_companion_cta_widget .right .widget-title {
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 section[class*="-section"] .widget_raratheme_companion_cta_widget .right .text-holder p {
   margin-bottom: 0;
+  color: #fff;
 }
 
 section[class*="-section"] .widget_raratheme_companion_cta_widget .right .button-wrap {
-  position: absolute;
-  top: 20%;
-  right: 0;
-  width: 35%;
-  text-align: right;
+  position: static;
+  margin-top: 30px;
+  width: 100%;
+  text-align: center;
+}
+
+.bg-cta-section .widget_raratheme_companion_cta_widget .widget-title {
+  font-size: 2.1em;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.bg-cta-section .widget_raratheme_companion_cta_widget .text-holder {
+  font-size: 0.95em;
+}
+
+.bg-cta-section .widget_raratheme_companion_cta_widget .text-holder p {
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+.bg-cta-section .widget_raratheme_companion_cta_widget a.btn-cta {
+  background: transparent;
+  border-color: #ffffff;
+  color: #ffffff;
+  padding: 11px 40px;
+  border-radius: 3px;
 }
 
 /*===========================
@@ -2899,9 +3029,14 @@ section.article-section {
   text-align: center;
 }
 
+section.article-section .section-title {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
 .article-section .article-wrap {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: 30px;
   text-align: left;
   margin-top: 50px;
@@ -2909,7 +3044,7 @@ section.article-section {
 }
 
 .article-section .article-wrap article {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
   border-radius: 5px;
   /*overflow: hidden;*/
 }
@@ -2919,14 +3054,60 @@ section.article-section {
 }
 
 .article-section .article-wrap header.entry-header {
-  padding: 30px;
+  padding: 22px 24px;
 }
 
 .article-section .article-wrap header.entry-header .entry-title {
-  margin: 10px 0 0 0;
-  line-height: 1.5;
-  font-size: 1.112em;
+  margin: 8px 0 0 0;
+  line-height: 1.4;
+  font-size: 0.98em;
   font-weight: 700;
+}
+
+/* Blog card: image + content side by side */
+.article-section .article-wrap article .blog-card-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.article-section .article-wrap article .post-thumbnail {
+  flex: 0 0 40%;
+}
+
+.article-section .article-wrap article .post-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.article-section .article-wrap article .blog-card-text {
+  flex: 1;
+  padding: 20px 24px;
+}
+
+.article-section .article-wrap article .blog-card-text .entry-title {
+  margin-top: 0;
+}
+
+.article-section .article-wrap article .blog-excerpt {
+  margin-top: 8px;
+  font-size: 0.85em;
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.article-section .article-wrap article .blog-read-more {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 0.9em;
+  font-weight: 700;
+  color: #f7941d;
+}
+
+.article-section .article-wrap article .blog-read-more:hover {
+  color: #ff6b35;
 }
 
 /*=========================
@@ -2951,6 +3132,7 @@ section.testimonial-section {
   z-index: 1;
   background-image: url(images/testimonial-bg.jpg);
   background-repeat: no-repeat;
+  display: none;
 }
 
 .testimonial-section .section-title,
@@ -3044,6 +3226,7 @@ CLIENT SECTION
 section.client-section {
   margin: 40px 0 60px 0;
   text-align: center;
+  display: none;
 }
 
 .client-section .widget {
@@ -3064,22 +3247,21 @@ section.client-section {
 SITE FOOTER SECTION
 ==========================*/
 .footer-t {
-  background: #000;
+  background: #f5f5f5;
   padding-top: 60px;
+  padding-bottom: 40px;
 }
 
 .site-footer .grid:not(.column-1) {
   display: flex;
   flex: 1;
   flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
 }
 
 .site-footer .grid:not(.column-1)>.col {
   margin-right: 3%;
-}
-
-.site-footer .grid:not(.column-1)>.col:last-child {
-  margin-right: 0;
 }
 
 .site-footer .grid.column-4>.col {
@@ -3095,7 +3277,7 @@ SITE FOOTER SECTION
 }
 
 .site-footer .widget_text .textwidget {
-  color: rgba(255, 255, 255, 0.8);
+  color: #000;
 }
 
 .widget_text .textwidget p {
@@ -3108,20 +3290,21 @@ SITE FOOTER SECTION
 }
 
 .footer-b {
-  background: #212121;
-  padding: 15px 0;
+  background: #f5f5f5;
+  padding: 15px 0 30px 0;
   font-size: 0.888em;
-  color: rgba(255, 255, 255, 0.8);
+  color: #666666;
   font-weight: 400;
   text-align: center;
+  border-top: 1px solid #e0e0e0;
 }
 
 .footer-b a {
-  color: rgba(255, 255, 255, 0.8);
+  color: #666666;
 }
 
 .footer-b a:hover {
-  color: #2ace5e;
+  color: #ff6b35;
 }
 
 .footer-b .privacy-block {
@@ -3379,6 +3562,543 @@ CONTACT PAGE
   margin-top: 0;
   font-size: 0.8888em;
   font-weight: 400;
+}
+
+/*===========================
+CONTACT PAGE - NEW DESIGN
+===========================*/
+/* Hide sidebar on contact page */
+.page-template-contact-page .site-main,
+.page-template-contact-page #primary,
+.contact-page-wrapper {
+  width: 100%;
+  max-width: 100%;
+}
+
+.page-template-contact-page #secondary,
+.contact-page-wrapper ~ #secondary,
+body.page-template-contact-page #secondary {
+  display: none !important;
+}
+
+body.page-template-contact-page .site-main {
+  width: 100%;
+}
+
+/* Contact Hero Banner - Extends to header */
+.contact-hero-banner {
+  position: relative;
+  width: 100vw;
+  min-height: 500px;
+  background-image: url('images/banner-image.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+body.page-template-contact-page .contact-hero-banner {
+  margin-top: 0;
+}
+
+.contact-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.contact-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.contact-hero-title {
+  font-size: 4em;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
+  font-family: var(--primary-font);
+}
+
+/* Contact Page Content */
+.contact-page-content {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* Main Content Area - Full width grey background */
+.contact-main-content {
+  background: #f5f5f5;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: 60px 20px;
+  box-sizing: border-box;
+}
+
+.contact-main-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Headquarters Section */
+.contact-headquarters {
+  text-align: center;
+  padding: 0;
+  margin: 0 0 60px 0;
+}
+
+.contact-section-title {
+  font-size: 1.8em;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 20px 0;
+}
+
+.contact-address {
+  font-size: 1.1em;
+  color: #666;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Contact Info Columns */
+.contact-info-columns {
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-info-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.contact-column {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+  text-align: left;
+}
+
+.contact-column-title {
+  font-size: 1.5em;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 15px 0;
+}
+
+.contact-subtitle {
+  font-size: 1em;
+  color: #666;
+  margin: 0 0 15px 0;
+  line-height: 1.6;
+}
+
+.contact-phone-item {
+  margin-bottom: 15px;
+}
+
+.contact-phone-item strong {
+  display: block;
+  font-size: 1em;
+  color: #333;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.contact-phone {
+  font-size: 1.1em;
+  color: #333;
+  font-weight: 600;
+}
+
+.contact-description {
+  font-size: 0.95em;
+  color: #666;
+  line-height: 1.6;
+  margin: 20px 0 0 0;
+}
+
+.contact-link {
+  color: #ff6b35;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.contact-link:hover {
+  text-decoration: underline;
+}
+
+/* Newsletter Section - Full width like banner */
+.contact-newsletter {
+  background: #ff6b35;
+  padding: 30px 20px;
+  margin: 0;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  box-sizing: border-box;
+  clear: both;
+  display: block;
+}
+
+.newsletter-content {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  flex-wrap: nowrap;
+}
+
+.newsletter-title {
+  color: #fff;
+  font-size: 1.5em;
+  font-weight: 700;
+  margin: 0;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.newsletter-form {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex: 1;
+  max-width: none;
+  min-width: auto;
+}
+
+.newsletter-input-wrapper {
+  position: relative;
+  flex: 1;
+  background: #fff;
+  padding: 0 15px 0 45px;
+  display: flex;
+  align-items: center;
+  height: 50px;
+  border-radius: 5px;
+  min-width: 320px;
+  max-width: 520px;
+}
+
+.newsletter-input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 1em;
+  padding: 0;
+  background: transparent;
+  color: #333;
+}
+
+.newsletter-input::placeholder {
+  color: #999;
+}
+
+.newsletter-icon {
+  position: absolute;
+  left: 15px;
+  color: #999;
+  font-size: 1.1em;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.newsletter-submit {
+  background: #ff6b35;
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 0 30px;
+  height: 48px;
+  font-size: 0.85em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+  flex-shrink: 0;
+  margin-left: 10px;
+}
+
+.newsletter-submit:hover {
+  background: #fff;
+  color: #ff6b35;
+  border-color: #fff;
+}
+
+/* Make banner extend to header on contact page */
+body.page-template-contact-page .site-header {
+  position: relative;
+  z-index: 10;
+}
+
+body.page-template-contact-page .contact-hero-banner {
+  margin-top: 0;
+}
+
+/* Hide breadcrumbs on contact page */
+body.page-template-contact-page .breadcrumb-wrap {
+  display: none !important;
+}
+
+/* Ensure full width layout */
+body.page-template-contact-page #content {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body.page-template-contact-page .site-main {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Break out of any container constraints */
+body.page-template-contact-page #primary {
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+/* Ensure all full-width sections extend properly */
+body.page-template-contact-page .contact-main-content {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+/* Newsletter must extend fully including header area - same as banner */
+body.page-template-contact-page .contact-newsletter {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  box-sizing: border-box;
+  clear: both;
+  display: block;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Ensure parent containers don't limit width */
+body.page-template-contact-page #primary,
+body.page-template-contact-page .site-main,
+body.page-template-contact-page #content,
+body.page-template-contact-page .site-content {
+  overflow-x: visible;
+  max-width: 100%;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Ensure body and html don't have padding that prevents full width */
+body.page-template-contact-page {
+  overflow-x: hidden;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+html.page-template-contact-page {
+  overflow-x: hidden;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Ensure site container doesn't limit newsletter */
+body.page-template-contact-page .site {
+  overflow-x: visible;
+  max-width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  width: 100% !important;
+}
+
+/* Hide default footer */
+.site-footer,
+.footer-t,
+.footer-b,
+#colophon {
+  display: none !important;
+}
+
+/* Custom Footer for Contact Page */
+.contact-page-footer {
+  background: #f5f5f5;
+  padding: 60px 20px 40px 20px;
+  text-align: center;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  box-sizing: border-box;
+  margin-top: 0;
+}
+
+.contact-footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contact-footer-nav {
+  margin-bottom: 30px;
+}
+
+.contact-footer-nav a {
+  color: #000;
+  text-decoration: none;
+  font-size: 0.9em;
+  font-weight: 600;
+  margin: 0 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+.contact-footer-nav a:hover {
+  color: #ff6b35;
+}
+
+.contact-footer-social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.contact-footer-social .social-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.1em;
+  color: #fff;
+  transition: transform 0.3s ease;
+}
+
+.contact-footer-social .social-icon:hover {
+  transform: scale(1.1);
+}
+
+.contact-footer-social .social-icon.facebook {
+  background: #1877f2;
+}
+
+.contact-footer-social .social-icon.google {
+  background: #fff;
+  color: #4285f4;
+  border: 2px solid #4285f4;
+}
+
+.contact-footer-social .social-icon.line {
+  background: #00c300;
+}
+
+.contact-footer-social .social-icon.twitter {
+  background: #1da1f2;
+}
+
+/* Ensure white background after newsletter */
+body.page-template-contact-page {
+  background: #fff;
+}
+
+body.page-template-contact-page .site {
+  background: #fff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact-hero-title {
+    font-size: 2.5em;
+  }
+  
+  .contact-headquarters {
+    padding: 40px 20px;
+  }
+  
+  .contact-info-columns {
+    flex-direction: column;
+    padding: 40px 20px;
+  }
+  
+  .contact-column {
+    max-width: 100%;
+    text-align: center;
+  }
+  
+  .newsletter-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 25px;
+  }
+  
+  .newsletter-form {
+    width: 100%;
+    max-width: 100%;
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  .newsletter-title {
+    white-space: normal;
+    margin-bottom: 0;
+    font-size: 1.3em;
+  }
+  
+  .newsletter-submit {
+    margin-left: 10px;
+    margin-top: 0;
+    width: auto;
+  }
+  
+  .newsletter-input-wrapper {
+    width: 100%;
+    max-width: 100%;
+    min-width: auto;
+  }
 }
 
 /*===========================
@@ -3648,6 +4368,86 @@ a:hover path.fav {
   flex: 0;
   border-radius: 0 5px 5px 0;
   min-height: 50px;
+}
+
+/*===========================
+CUSTOM FOOTER NEWSLETTER BAR
+===========================*/
+.contact-newsletter.global-newsletter {
+  background: #f7941d;
+  padding: 20px 0;
+  color: #ffffff;
+}
+
+.contact-newsletter .newsletter-content {
+  max-width: 1170px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.contact-newsletter .newsletter-title {
+  margin: 0;
+  font-size: 1.1em;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.contact-newsletter .newsletter-form {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* tách ô email và nút SUBSCRIBE */
+}
+
+.contact-newsletter .newsletter-input-wrapper {
+  position: relative;
+  flex: 1;
+}
+
+.contact-newsletter .newsletter-input {
+  width: 100%;
+  height: 46px;
+  border-radius: 3px;
+  border: none;
+  padding: 0 14px 0 40px;
+  font-size: 0.95em;
+}
+
+.contact-newsletter .newsletter-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  opacity: 0.6;
+}
+
+.contact-newsletter .newsletter-submit {
+  height: 46px;
+  padding: 0 26px;
+  background: transparent;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.9em;
+  border-radius: 3px;
+}
+
+.contact-newsletter .newsletter-submit:hover {
+  background: #ffffff;
+  color: #f7941d;
+}
+
+.contact-page-footer .footer-logo-wrap {
+  text-align: center;
+  margin: 25px 0 15px 0;
+}
+
+.contact-page-footer .footer-logo-wrap .site-logo-block {
+  display: inline-block;
 }
 
 /*===========================
@@ -8158,4 +8958,200 @@ RESPONSIVE STYLESHEET
 
 .wp-block-social-links {
   flex-wrap: wrap !important;
+}
+
+/* Hide navigation wrappers if menu is empty */
+.main-navigation .menu:empty,
+.secondary-nav .menu:empty {
+  display: none;
+}
+
+.main-navigation .nav-menu:empty,
+.secondary-nav .nav-menu:empty {
+  display: none;
+}
+
+/* Header color adjustments */
+.site-header,
+.header-t {
+  background-color: #ffffff;
+}
+
+.site-title a {
+  color: #000000;
+}
+
+.site-title a:hover,
+.site-title a:focus {
+  color: #000000;
+}
+
+/* Make all header menu links black in all states */
+.main-navigation .nav-menu > li > a,
+.main-navigation .nav-menu > li > a:link,
+.main-navigation .nav-menu > li > a:visited,
+.secondary-nav .nav-menu > li > a,
+.secondary-nav .nav-menu > li > a:link,
+.secondary-nav .nav-menu > li > a:visited {
+  color: #000000 !important;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.main-navigation .nav-menu > li.current-menu-item > a,
+.main-navigation .nav-menu > li.current_page_item > a,
+.main-navigation .nav-menu > li > a:hover,
+.main-navigation .nav-menu > li > a:active,
+.secondary-nav .nav-menu > li.current-menu-item > a,
+.secondary-nav .nav-menu > li.current_page_item > a,
+.secondary-nav .nav-menu > li > a:hover,
+.secondary-nav .nav-menu > li > a:active {
+  color: #000000 !important;
+  border-bottom: 3px solid #f7941d; /* orange underline */
+}
+
+/* Submit Job button in header */
+.header-actions .btn,
+.btn-wrap .btn {
+  background-color: #f7941d;
+  border-color: #f7941d;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.header-actions .btn:hover,
+.btn-wrap .btn:hover {
+  background-color: #ffffff;
+  color: #f7941d;
+  border-color: #f7941d;
+}
+
+/* Custom footer layout */
+.footer-newsletter {
+  background-color: #f7941d;
+  padding: 25px 0;
+  color: #ffffff;
+}
+
+.footer-newsletter .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.footer-newsletter-title {
+  font-size: 1.1em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.footer-newsletter-form {
+  display: flex;
+  flex: 1;
+  max-width: 600px;
+}
+
+.footer-newsletter-form input[type="email"] {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  background: #ffffff;
+  color: #333333;
+  font-size: 0.95em;
+}
+
+.footer-newsletter-form button {
+  padding: 0 28px;
+  border: 1px solid #ffffff;
+  background: transparent;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.9em;
+}
+
+.footer-newsletter-form button:hover {
+  background: #ffffff;
+  color: #f7941d;
+}
+
+.site-footer-custom {
+  background: #ffffff;
+  text-align: center;
+  padding: 40px 0 50px;
+}
+
+.site-footer-custom .footer-site-title {
+  font-size: 1.4em;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.footer-menu-nav .footer-menu {
+  list-style: none;
+  margin: 0 0 20px;
+  padding: 0;
+}
+
+.footer-menu-nav .footer-menu > li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.footer-menu-nav .footer-menu > li > a {
+  text-transform: uppercase;
+  font-size: 0.85em;
+  font-weight: 700;
+  color: #000000;
+}
+
+.footer-menu-nav .footer-menu > li > a:hover {
+  color: #f7941d;
+}
+
+.footer-social {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+}
+
+.footer-social li {
+  display: inline-block;
+  margin: 0 6px;
+}
+
+.footer-social a {
+  display: inline-block;
+  width: 38px;
+  height: 38px;
+  line-height: 38px;
+  border-radius: 50%;
+  text-align: center;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.9em;
+}
+
+.footer-social .social-facebook { background: #3b5998; }
+.footer-social .social-google { background: #dd4b39; }
+.footer-social .social-line { background: #00c300; }
+.footer-social .social-twitter { background: #1da1f2; }
+
+/* Hide submenus in footer menu – only show top-level items */
+.site-footer-custom .footer-menu .sub-menu {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .footer-newsletter .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-newsletter-form {
+    width: 100%;
+    max-width: none;
+  }
 }
