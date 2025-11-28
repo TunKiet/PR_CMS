@@ -1,0 +1,77 @@
+/*
+ Theme Name:   JobScout Child
+ Theme URI:    https://yourdomain.com/
+ Description:  A child theme for JobScout.
+ Author:       Your Name or Company Name
+ Author URI:   https://yourdomain.com/
+ Template:     jobscout 
+ Version:      1.0.0
+ License:      GNU General Public License v2 or later
+ License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+ Tags:         blog, portfolio, e-commerce
+ Text Domain:  jobscout-child
+*/
+/* Style for Newest Blog Entries Section */
+.jobscout-related-posts-section {
+    padding: 40px 0;
+    margin-top: 40px;
+    border-top: 1px solid #eee; /* Đường kẻ phân cách */
+    text-align: center;
+}
+
+.jobscout-related-posts-section .section-title {
+    font-size: 1.5em;
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.related-posts-wrapper.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Chia thành 3 cột đều nhau */
+    gap: 30px; /* Khoảng cách giữa các cột */
+    text-align: left;
+}
+
+/* Kiểu dáng cho từng bài viết */
+.related-post-item .post-thumbnail {
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.related-post-item .post-thumbnail img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.related-post-item a:hover .post-thumbnail img {
+    transform: scale(1.05); /* Hiệu ứng zoom khi hover */
+}
+
+.related-post-item .post-title {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-top: 0;
+    line-height: 1.4;
+}
+
+.related-post-item .post-meta {
+    font-size: 0.9em;
+    color: #888;
+}
+
+/* Responsive cho màn hình nhỏ hơn (Tablet) */
+@media (max-width: 992px) {
+    .related-posts-wrapper.grid-layout {
+        grid-template-columns: repeat(2, 1fr); /* 2 cột */
+    }
+}
+
+/* Responsive cho màn hình điện thoại */
+@media (max-width: 600px) {
+    .related-posts-wrapper.grid-layout {
+        grid-template-columns: 1fr; /* 1 cột */
+    }
+}
